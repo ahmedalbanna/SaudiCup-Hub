@@ -1,3 +1,4 @@
+
 import { NewsCard } from '@/components/cards/NewsCard';
 import { news } from '@/lib/mock-data';
 import {
@@ -41,3 +42,5 @@ export default function NewsPage() {
         ))}
       </div>
     </>
+  );
+}
