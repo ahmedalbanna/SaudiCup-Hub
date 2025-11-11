@@ -1,3 +1,166 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "A dramatic shot of a football stadium at night under bright lights.",
+      "imageUrl": "https://images.unsplash.com/photo-1504016798967-59a258e9386d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Zm9vdGJhbGwlMjBzdGFkaXVtfGVufDB8fHx8MTc2Mjg2ODg3OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "football stadium"
+    },
+    {
+      "id": "t1_logo",
+      "description": "Logo for Riyadh Rovers",
+      "imageUrl": "https://images.unsplash.com/photo-1639895276019-65bfc8c2e8bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwbG9nb3xlbnwwfHx8fDE3NjI3OTQ1NDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team logo"
+    },
+    {
+      "id": "t2_logo",
+      "description": "Logo for Jeddah Jets",
+      "imageUrl": "https://images.unsplash.com/photo-1640182837698-d1dee88748b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZWFtJTIwbG9nb3xlbnwwfHx8fDE3NjI3OTQ1NDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team logo"
+    },
+    {
+      "id": "t3_logo",
+      "description": "Logo for Dammam Dynamos",
+      "imageUrl": "https://images.unsplash.com/photo-1631607054640-876e1cd7ea27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx0ZWFtJTIwbG9nb3xlbnwwfHx8fDE3NjI3OTQ1NDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team logo"
+    },
+    {
+      "id": "t4_logo",
+      "description": "Logo for Mecca Monarchs",
+      "imageUrl": "https://images.unsplash.com/photo-1631607054640-876e1cd7ea27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx0ZWFtJTIwbG9nb3xlbnwwfHx8fDE3NjI3OTQ1NDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team logo"
+    },
+    {
+      "id": "t5_logo",
+      "description": "Logo for Medina Stallions",
+      "imageUrl": "https://images.unsplash.com/photo-1639895276019-65bfc8c2e8bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwbG9nb3xlbnwwfHx8fDE3NjI3OTQ1NDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team logo"
+    },
+    {
+      "id": "t6_logo",
+      "description": "Logo for Taif Tigers",
+      "imageUrl": "https://images.unsplash.com/photo-1625392085233-3f10b25fac1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0ZWFtJTIwbG9nb3xlbnwwfHx8fDE3NjI3OTQ1NDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team logo"
+    },
+    {
+      "id": "p1",
+      "description": "Portrait of Adel Al-Salem",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtYWxlJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYyNzk5NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "male portrait"
+    },
+    {
+      "id": "p2",
+      "description": "Portrait of Fahd Al-Muwallad",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtYWxlJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYyNzk5NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "male portrait"
+    },
+    {
+      "id": "p3",
+      "description": "Portrait of Khalid Eisa",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtYWxlJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYyNzk5NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "male portrait"
+    },
+    {
+      "id": "p4",
+      "description": "Portrait of Sultan Al-Ghannam",
+      "imageUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFsZSUyMHBvcnRyYWl0fGVufDB8fHx8MTc2Mjc5OTQwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "male portrait"
+    },
+    {
+      "id": "p5",
+      "description": "Portrait of Yasir Al-Shahrani",
+      "imageUrl": "https://images.unsplash.com/flagged/photo-1595514191830-3e96a518989b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtYWxlJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYyNzk5NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "male portrait"
+    },
+    {
+      "id": "p6",
+      "description": "Portrait of Abdullah Otayf",
+      "imageUrl": "https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtYWxlJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYyNzk5NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "male portrait"
+    },
+    {
+      "id": "n1",
+      "description": "Football players celebrating a goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1535506197904-e5c09c0e5619?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMGNlbGVicmF0aW9ufGVufDB8fHx8MTc2MjgxMTA5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "football celebration"
+    },
+    {
+      "id": "n2",
+      "description": "A player signing a contract.",
+      "imageUrl": "https://images.unsplash.com/photo-1686771416282-3888ddaf249b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb250cmFjdCUyMHNpZ25pbmd8ZW58MHx8fHwxNzYyODk4MDgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "contract signing"
+    },
+    {
+      "id": "n3",
+      "description": "A wide shot of a modern football stadium.",
+      "imageUrl": "https://images.unsplash.com/photo-1504016798967-59a258e9386d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Zm9vdGJhbGwlMjBzdGFkaXVtfGVufDB8fHx8MTc2Mjg2ODg3OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "football stadium"
+    },
+    {
+      "id": "n4",
+      "description": "A player holding a trophy.",
+      "imageUrl": "https://images.unsplash.com/photo-1527980473913-566fcaa9e34e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwbGF5ZXIlMjB0cm9waHl8ZW58MHx8fHwxNzYyODk0NDE2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "player trophy"
+    },
+    {
+      "id": "s1",
+      "description": "King Fahd International Stadium",
+      "imageUrl": "https://images.unsplash.com/photo-1760115338719-3e8ff254870d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzdGFkaXVtJTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYyODk4MDgyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "stadium exterior"
+    },
+    {
+      "id": "s2",
+      "description": "King Abdullah Sports City",
+      "imageUrl": "https://images.unsplash.com/photo-1623097194285-858ce1879680?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzdGFkaXVtJTIwbGlnaHRzfGVufDB8fHx8MTc2Mjg1NjY1OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "stadium lights"
+    },
+    {
+      "id": "s3",
+      "description": "Mrsool Park",
+      "imageUrl": "https://images.unsplash.com/photo-1760115492835-adc04bcea8c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdGFkaXVtJTIwcGl0Y2h8ZW58MHx8fHwxNzYyODk4MDgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "stadium pitch"
+    },
+    {
+      "id": "s4",
+      "description": "Prince Mohamed bin Fahd Stadium",
+      "imageUrl": "https://images.unsplash.com/photo-1582319193378-c63336350969?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzdGFkaXVtJTIwc2VhdHN8ZW58MHx8fHwxNzYyODk4MDgyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "stadium seats"
+    },
+    {
+      "id": "gallery1",
+      "description": "Action shot of a football match.",
+      "imageUrl": "https://images.unsplash.com/photo-1646643508965-003521399fe3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmb290YmFsbCUyMG1hdGNofGVufDB8fHx8MTc2Mjg1NTQyN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "football match"
+    },
+    {
+      "id": "gallery2",
+      "description": "Fans in a stadium waving flags.",
+      "imageUrl": "https://images.unsplash.com/photo-1545558490-d4ca82897db4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Zm9vdGJhbGwlMjBmYW5zfGVufDB8fHx8MTc2Mjg5ODA4MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "football fans"
+    },
+    {
+      "id": "gallery3",
+      "description": "A player scoring a goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1650410811784-42a0002fdb0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzY29yaW5nJTIwZ29hbHxlbnwwfHx8fDE3NjI4OTgwODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "scoring goal"
+    },
+    {
+      "id": "gallery4",
+      "description": "A team posing with a trophy.",
+      "imageUrl": "https://images.unsplash.com/photo-1580831800257-f83135932664?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0ZWFtJTIwdHJvcGh5fGVufDB8fHx8MTc2Mjg5ODA4MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team trophy"
+    },
+    {
+      "id": "gallery5",
+      "description": "A close-up of a football.",
+      "imageUrl": "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMGJhbGx8ZW58MHx8fHwxNzYyODMwMzUzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "football ball"
+    },
+    {
+      "id": "gallery6",
+      "description": "A coach giving instructions.",
+      "imageUrl": "https://images.unsplash.com/photo-1574772135913-d519461c3996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmb290YmFsbCUyMGNvYWNofGVufDB8fHx8MTc2Mjc3OTE2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "football coach"
+    }
+  ]
 }
