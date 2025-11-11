@@ -12,7 +12,7 @@ import {
   Shield,
   Users,
   Newspaper,
-  Stadium,
+  Landmark,
   GalleryHorizontal,
   LayoutDashboard,
   PanelLeft,
@@ -26,7 +26,7 @@ const navItems = [
   { href: '/teams', icon: Shield, label: 'Teams' },
   { href: '/players', icon: Users, label: 'Players' },
   { href: '/news', icon: Newspaper, label: 'News' },
-  { href: '/stadiums', icon: Stadium, label: 'Stadiums' },
+  { href: '/stadiums', icon: Landmark, label: 'Stadiums' },
   { href: '/gallery', icon: GalleryHorizontal, label: 'Gallery' },
 ];
 
