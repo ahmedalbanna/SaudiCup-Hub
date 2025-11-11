@@ -1,5 +1,6 @@
+
 import Link from 'next/link';
-import { ArrowUpRight, PlusCircle } from 'lucide-react';
+import { ArrowUpRight, Calendar, Shield, User, Users } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -153,3 +154,11 @@ export default function Dashboard() {
                     <div className="ml-auto font-medium">
                         <Button variant="outline" size="sm">Unfollow</Button>
                     </div>
+                </div>
+            ))}
+          </CardContent>
+        </Card>
+      </div>
+    </>
+  );
+}
