@@ -1,3 +1,5 @@
+'use client';
+import { useState } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { teams, players, matches, news } from '@/lib/mock-data';
@@ -17,13 +19,15 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { MatchCard } from '@/components/cards/MatchCard';
 import { NewsCard } from '@/components/cards/NewsCard';
+import { ShieldCheck, ShieldPlus } from 'lucide-react';
 
 export default function TeamProfilePage({ params }: { params: { id: string } }) {
   const team = teams.find((t) => t.id === params.id);
+  const [isFollowing, setIsFollowing] = useState(false);
 
   if (!team) {
     notFound();
@@ -39,14 +43,22 @@ export default function TeamProfilePage({ params }: { params: { id: string } }) 
     <div className="mx-auto grid w-full max-w-6xl gap-6">
       <Card>
         <CardHeader className="flex flex-col items-center text-center">
-          <Image
-            src={team.logoUrl}
-            alt={`${team.name} logo`}
-            width={120}
-            height={120}
-            className="rounded-full mb-4"
-            data-ai-hint="team logo"
-          />
+          <div className="relative">
+            <Image
+              src={team.logoUrl}
+              alt={`${team.name} logo`}
+              width={120}
+              height={120}
+              className="rounded-full mb-4"
+              data-ai-hint="team logo"
+            />
+            <div className="absolute top-0 right-[-50px]">
+              <Button variant="outline" size="sm" onClick={() => setIsFollowing(!isFollowing)}>
+                {isFollowing ? <ShieldCheck className="mr-2 h-4 w-4" /> : <ShieldPlus className="mr-2 h-4 w-4" />}
+                {isFollowing ? 'Following' : 'Follow'}
+              </Button>
+            </div>
+          </div>
           <CardTitle className="font-headline text-4xl">{team.name}</CardTitle>
           <CardDescription>
             View the team's roster, recent performance, and news.
@@ -115,7 +127,7 @@ export default function TeamProfilePage({ params }: { params: { id: string } }) 
                 <CardHeader>
                     <CardTitle>Team News</CardTitle>
                     <CardDescription>The latest articles and updates related to {team.name}.</CardDescription>
-                </CardHeader>
+                </Header>
                 <CardContent className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {teamNews.length > 0 ? teamNews.map(article => (
                         <NewsCard key={article.id} article={article} />

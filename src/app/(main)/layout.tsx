@@ -64,21 +64,21 @@ export default function MainLayout({
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" className="justify-start gap-2 p-2 h-auto w-full">
                          <Avatar className="h-8 w-8">
-                            <AvatarImage src="https://picsum.photos/seed/user/100/100" alt="@shadcn" />
+                            <AvatarImage src="https://picsum.photos/seed/user1/100/100" alt="User avatar" data-ai-hint="female portrait" />
                             <AvatarFallback>SA</AvatarFallback>
                         </Avatar>
                         <div className="text-left hidden group-data-[collapsible=icon]:hidden">
-                            <p className="text-sm font-medium">Guest User</p>
-                            <p className="text-xs text-muted-foreground">guest@saudicup.com</p>
+                            <p className="text-sm font-medium">Sara Al-Ahmed</p>
+                            <p className="text-xs text-muted-foreground">sara@example.com</p>
                         </div>
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="w-56" align="end" forceMount>
                       <DropdownMenuLabel className="font-normal">
                         <div className="flex flex-col space-y-1">
-                          <p className="text-sm font-medium leading-none">Guest User</p>
+                          <p className="text-sm font-medium leading-none">Sara Al-Ahmed</p>
                           <p className="text-xs leading-none text-muted-foreground">
-                            guest@saudicup.com
+                            sara@example.com
                           </p>
                         </div>
                       </DropdownMenuLabel>
@@ -86,7 +86,9 @@ export default function MainLayout({
                       <DropdownMenuItem>Profile</DropdownMenuItem>
                       <DropdownMenuItem>Settings</DropdownMenuItem>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem>Log out</DropdownMenuItem>
+                       <DropdownMenuItem asChild>
+                        <Link href="/">Log out</Link>
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             </SidebarFooter>

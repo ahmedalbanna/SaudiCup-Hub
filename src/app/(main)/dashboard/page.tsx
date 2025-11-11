@@ -1,5 +1,6 @@
-
+'use client';
 import Link from 'next/link';
+import { useState } from 'react';
 import { ArrowUpRight, Calendar, Shield, User, Users } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
@@ -19,9 +20,15 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { players, teams, matches } from '@/lib/mock-data';
+import { players as initialPlayers, teams, matches } from '@/lib/mock-data';
 
 export default function Dashboard() {
+  const [players, setPlayers] = useState(initialPlayers.slice(0, 4));
+
+  const handleUnfollow = (playerId: string) => {
+    setPlayers(players.filter(p => p.id !== playerId));
+  }
+
   return (
     <>
       <div className="flex items-center">
@@ -52,9 +59,9 @@ export default function Dashboard() {
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">5</div>
+            <div className="text-2xl font-bold">{players.length}</div>
             <p className="text-xs text-muted-foreground">
-              You are following 5 players
+              You are following {players.length} players
             </p>
           </CardContent>
         </Card>
@@ -137,7 +144,7 @@ export default function Dashboard() {
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-8">
-            {players.slice(0, 4).map(player => (
+            {players.map(player => (
                  <div key={player.id} className="flex items-center gap-4">
                     <Avatar className="hidden h-9 w-9 sm:flex">
                     <AvatarImage src={player.imageUrl} alt="Avatar" data-ai-hint="male portrait" />
@@ -152,10 +159,15 @@ export default function Dashboard() {
                     </p>
                     </div>
                     <div className="ml-auto font-medium">
-                        <Button variant="outline" size="sm">Unfollow</Button>
+                        <Button variant="outline" size="sm" onClick={() => handleUnfollow(player.id)}>Unfollow</Button>
                     </div>
                 </div>
             ))}
+             {players.length === 0 && (
+              <p className="text-sm text-muted-foreground text-center">
+                You are not following any players yet.
+              </p>
+            )}
           </CardContent>
         </Card>
       </div>

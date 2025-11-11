@@ -1,3 +1,5 @@
+'use client';
+import { useState } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { players, teams } from '@/lib/mock-data';
@@ -17,10 +19,12 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Separator } from '@/components/ui/separator';
-import { User, Calendar, Shirt, Target } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { User, Calendar, Shirt, Target, Star, UserPlus } from 'lucide-react';
 
 export default function PlayerProfilePage({ params }: { params: { id: string } }) {
   const player = players.find((p) => p.id === params.id);
+  const [isFollowing, setIsFollowing] = useState(false);
 
   if (!player) {
     notFound();
@@ -49,7 +53,7 @@ export default function PlayerProfilePage({ params }: { params: { id: string } }
                     data-ai-hint="male portrait"
                 />
             </div>
-            <div className='pt-4'>
+            <div className='pt-4 relative'>
                 <CardTitle className="font-headline text-4xl">{player.name}</CardTitle>
                 {team && (
                     <CardDescription className="flex items-center justify-center gap-2 pt-2">
@@ -57,6 +61,12 @@ export default function PlayerProfilePage({ params }: { params: { id: string } }
                         {team.name}
                     </CardDescription>
                 )}
+                 <div className="absolute top-2 right-[-60px]">
+                  <Button variant="outline" size="sm" onClick={() => setIsFollowing(!isFollowing)}>
+                    {isFollowing ? <Star className="mr-2 h-4 w-4 fill-current" /> : <UserPlus className="mr-2 h-4 w-4" />}
+                    {isFollowing ? 'Following' : 'Follow'}
+                  </Button>
+                </div>
             </div>
         </CardHeader>
         <CardContent>
