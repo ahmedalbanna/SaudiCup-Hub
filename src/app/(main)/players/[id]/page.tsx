@@ -1,5 +1,3 @@
-'use client';
-import { useState } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { players, teams } from '@/lib/mock-data';
@@ -24,7 +22,6 @@ import { User, Calendar, Shirt, Target, Star, UserPlus } from 'lucide-react';
 
 export default function PlayerProfilePage({ params }: { params: { id: string } }) {
   const player = players.find((p) => p.id === params.id);
-  const [isFollowing, setIsFollowing] = useState(false);
 
   if (!player) {
     notFound();
@@ -62,9 +59,9 @@ export default function PlayerProfilePage({ params }: { params: { id: string } }
                     </CardDescription>
                 )}
                  <div className="absolute top-2 left-[-60px]">
-                  <Button variant="outline" size="sm" onClick={() => setIsFollowing(!isFollowing)}>
-                    {isFollowing ? <Star className="ml-2 h-4 w-4 fill-current" /> : <UserPlus className="ml-2 h-4 w-4" />}
-                    {isFollowing ? 'تتابع' : 'متابعة'}
+                  <Button variant="outline" size="sm">
+                    <UserPlus className="ml-2 h-4 w-4" />
+                    متابعة
                   </Button>
                 </div>
             </div>
