@@ -4,6 +4,20 @@ export type Team = {
   logoUrl: string;
 };
 
+export type PlayerStats = {
+  pac: number;
+  sho: number;
+  pas: number;
+  dri: number;
+  def: number;
+  phy: number;
+};
+
+export type Nationality = {
+  name: string;
+  flagUrl: string;
+};
+
 export type Player = {
   id: string;
   name: string;
@@ -11,6 +25,9 @@ export type Player = {
   position: string;
   imageUrl: string;
   number: number;
+  rating: number;
+  stats: PlayerStats;
+  nationality: Nationality;
 };
 
 export type Match = {
@@ -52,13 +69,39 @@ export const teams: Team[] = [
   { id: 't6', name: 'نمور الطائف', logoUrl: 'https://picsum.photos/seed/t6_logo/100/100' },
 ];
 
+const saudiArabia: Nationality = { name: 'Saudi Arabia', flagUrl: 'https://picsum.photos/seed/sa_flag/40/30' };
+
 export const players: Player[] = [
-  { id: 'p1', name: 'عادل السالم', teamId: 't1', position: 'مهاجم', imageUrl: 'https://picsum.photos/seed/p1/400/400', number: 10 },
-  { id: 'p2', name: 'فهد المولد', teamId: 't2', position: 'لاعب وسط', imageUrl: 'https://picsum.photos/seed/p2/400/400', number: 8 },
-  { id: 'p3', name: 'خالد عيسى', teamId: 't3', position: 'حارس مرمى', imageUrl: 'https://picsum.photos/seed/p3/400/400', number: 1 },
-  { id: 'p4', name: 'سلطان الغنام', teamId: 't1', position: 'مدافع', imageUrl: 'https://picsum.photos/seed/p4/400/400', number: 2 },
-  { id: 'p5', name: 'ياسر الشهراني', teamId: 't2', position: 'مدافع', imageUrl: 'https://picsum.photos/seed/p5/400/400', number: 12 },
-  { id: 'p6', name: 'عبدالله عطيف', teamId: 't3', position: 'لاعب وسط', imageUrl: 'https://picsum.photos/seed/p6/400/400', number: 14 },
+  { 
+    id: 'p1', name: 'عادل السالم', teamId: 't1', position: 'ST', imageUrl: 'https://picsum.photos/seed/p1/400/500', number: 10, rating: 92,
+    stats: { pac: 91, sho: 93, pas: 85, dri: 94, def: 40, phy: 80 },
+    nationality: saudiArabia,
+  },
+  { 
+    id: 'p2', name: 'فهد المولد', teamId: 't2', position: 'CM', imageUrl: 'https://picsum.photos/seed/p2/400/500', number: 8, rating: 88,
+    stats: { pac: 85, sho: 82, pas: 90, dri: 89, def: 75, phy: 81 },
+    nationality: saudiArabia,
+  },
+  { 
+    id: 'p3', name: 'خالد عيسى', teamId: 't3', position: 'GK', imageUrl: 'https://picsum.photos/seed/p3/400/500', number: 1, rating: 85,
+    stats: { pac: 85, sho: 83, pas: 79, dri: 88, def: 45, phy: 80 }, // GK stats are different, but we use same structure for now
+    nationality: saudiArabia,
+  },
+  { 
+    id: 'p4', name: 'سلطان الغنام', teamId: 't1', position: 'RB', imageUrl: 'https://picsum.photos/seed/p4/400/500', number: 2, rating: 86,
+    stats: { pac: 92, sho: 70, pas: 80, dri: 84, def: 81, phy: 84 },
+    nationality: saudiArabia,
+  },
+  { 
+    id: 'p5', name: 'ياسر الشهراني', teamId: 't2', position: 'LB', imageUrl: 'https://picsum.photos/seed/p5/400/500', number: 12, rating: 87,
+    stats: { pac: 90, sho: 68, pas: 81, dri: 85, def: 82, phy: 83 },
+    nationality: saudiArabia,
+  },
+  { 
+    id: 'p6', name: 'عبدالله عطيف', teamId: 't3', position: 'CDM', imageUrl: 'https://picsum.photos/seed/p6/400/500', number: 14, rating: 84,
+    stats: { pac: 75, sho: 72, pas: 86, dri: 83, def: 85, phy: 80 },
+    nationality: saudiArabia,
+  },
 ];
 
 export const matches: Match[] = [

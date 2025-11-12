@@ -4,10 +4,6 @@ import type { Player, Team } from '@/lib/mock-data';
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
 } from '@/components/ui/card';
 
 type PlayerCardProps = {
@@ -16,42 +12,61 @@ type PlayerCardProps = {
 };
 
 export function PlayerCard({ player, team }: PlayerCardProps) {
+  const stats = [
+    { label: 'PAC', value: player.stats.pac },
+    { label: 'SHO', value: player.stats.sho },
+    { label: 'PAS', value: player.stats.pas },
+    { label: 'DRI', value: player.stats.dri },
+    { label: 'DEF', value: player.stats.def },
+    { label: 'PHY', value: player.stats.phy },
+  ];
+
   return (
-    <Card className="text-center">
-      <CardContent className="p-0">
-        <Link href={`/players/${player.id}`}>
-          <div className="relative aspect-[4/5] w-full">
-            <Image
-              src={player.imageUrl}
-              alt={`صورة ${player.name}`}
-              fill
-              className="rounded-t-lg object-cover transition-transform duration-300 hover:scale-105"
-              data-ai-hint="male portrait"
-            />
+    <Link href={`/players/${player.id}`} className="block group">
+       <Card className="bg-gradient-to-b from-green-900/50 via-gray-800 to-gray-900 border-2 border-gray-700 w-full aspect-[3/4] text-white font-headline transition-transform duration-300 group-hover:scale-105 group-hover:border-lime-300">
+        <CardContent className="relative p-2 h-full flex flex-col justify-end">
+          {/* Background Player Image */}
+          <Image
+            src={player.imageUrl}
+            alt={`صورة ${player.name}`}
+            fill
+            className="object-cover rounded-lg opacity-40 group-hover:opacity-60 transition-opacity"
+            data-ai-hint="male portrait"
+          />
+
+          <div className="relative z-10 flex flex-col h-full">
+            {/* Top section: Rating, Position, Flag, Team Logo */}
+            <div className="flex-shrink-0 p-2">
+              <div className="text-3xl font-bold">{player.rating}</div>
+              <div className="text-lg font-semibold -mt-1">{player.position}</div>
+              <div className="mt-1 flex flex-col items-start gap-1">
+                 <Image src={player.nationality.flagUrl} alt={player.nationality.name} width={32} height={20} className="rounded-sm" data-ai-hint="country flag" />
+                 <Image src={team.logoUrl} alt={team.name} width={24} height={24} className="rounded-full" data-ai-hint="team logo" />
+              </div>
+            </div>
+
+            <div className="flex-grow flex flex-col justify-end">
+                {/* Player Name */}
+                <div className="text-center my-4">
+                  <h3 className="text-2xl font-bold uppercase tracking-wider">{player.name}</h3>
+                </div>
+
+                {/* Divider */}
+                <hr className="border-gray-600 w-11/12 mx-auto" />
+
+                {/* Stats Grid */}
+                <div className="grid grid-cols-2 gap-x-4 gap-y-1 p-4 text-lg">
+                  {stats.map(stat => (
+                      <div key={stat.label} className="flex gap-2">
+                          <span className="font-bold">{stat.value}</span>
+                          <span className="text-gray-400">{stat.label}</span>
+                      </div>
+                  ))}
+                </div>
+            </div>
           </div>
-        </Link>
-      </CardContent>
-      <CardHeader className="p-4">
-        <CardTitle className="font-headline text-xl">
-          <Link href={`/players/${player.id}`} className="hover:underline">
-            {player.name}
-          </Link>
-        </CardTitle>
-        <CardDescription>{player.position}</CardDescription>
-      </CardHeader>
-      <CardFooter className="flex flex-col items-center justify-center p-4 pt-0">
-        <Link href={`/teams/${team.id}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
-            <Image
-                src={team.logoUrl}
-                alt={`شعار ${team.name}`}
-                width={20}
-                height={20}
-                className="rounded-full"
-                data-ai-hint="team logo"
-            />
-            <span>{team.name}</span>
-        </Link>
-      </CardFooter>
-    </Card>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
