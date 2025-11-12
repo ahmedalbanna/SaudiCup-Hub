@@ -7,6 +7,7 @@ import {
   Users,
   PanelLeft,
   CalendarDays,
+  Landmark,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -40,6 +41,7 @@ export default function AdminLayout({
     { href: '/admin/teams', label: 'إدارة الفرق', icon: Shield },
     { href: '/admin/players', label: 'إدارة اللاعبين', icon: Users },
     { href: '/admin/matches', label: 'إدارة المباريات', icon: CalendarDays },
+    { href: '/admin/stadiums', label: 'إدارة الملاعب', icon: Landmark },
   ];
 
   return (
