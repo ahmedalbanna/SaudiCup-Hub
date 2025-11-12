@@ -48,7 +48,7 @@ export function NewsCard({ article }: NewsCardProps) {
           })}
         </p>
         <Link
-          href="#"
+          href={`/news/${article.id}`}
           className="flex items-center font-semibold text-primary hover:text-primary/80"
         >
           اقرأ المزيد <ArrowLeft className="mr-1 h-4 w-4" />
