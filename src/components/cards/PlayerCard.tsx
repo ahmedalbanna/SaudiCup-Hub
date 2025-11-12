@@ -20,7 +20,7 @@ export function PlayerCard({ player, team }: PlayerCardProps) {
     <Card className="text-center">
       <CardContent className="p-0">
         <Link href={`/players/${player.id}`}>
-          <div className="relative aspect-square">
+          <div className="relative aspect-[4/5] w-full">
             <Image
               src={player.imageUrl}
               alt={`صورة ${player.name}`}
