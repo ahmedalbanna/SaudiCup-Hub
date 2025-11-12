@@ -23,7 +23,7 @@ export function PlayerCard({ player, team }: PlayerCardProps) {
           <div className="relative aspect-square">
             <Image
               src={player.imageUrl}
-              alt={`Portrait of ${player.name}`}
+              alt={`صورة ${player.name}`}
               fill
               className="rounded-t-lg object-cover transition-transform duration-300 hover:scale-105"
               data-ai-hint="male portrait"
@@ -43,7 +43,7 @@ export function PlayerCard({ player, team }: PlayerCardProps) {
         <Link href={`/teams/${team.id}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
             <Image
                 src={team.logoUrl}
-                alt={`${team.name} logo`}
+                alt={`شعار ${team.name}`}
                 width={20}
                 height={20}
                 className="rounded-full"

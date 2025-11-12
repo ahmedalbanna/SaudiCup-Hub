@@ -14,7 +14,7 @@ import { NewsCard } from '@/components/cards/NewsCard';
 import { matches, news } from '@/lib/mock-data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Logo } from '@/components/Logo';
-import { ArrowRight, Instagram, Twitter, Facebook } from 'lucide-react';
+import { ArrowLeft, Instagram, Twitter, Facebook } from 'lucide-react';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero');
@@ -23,10 +23,10 @@ export default function Home() {
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-14 items-center">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
+          <Link href="/" className="ml-6 flex items-center space-x-2">
             <Logo className="h-8 w-8" />
             <span className="font-bold sm:inline-block font-headline">
-              SaudiCup Hub
+              مركز كأس السعودية
             </span>
           </Link>
           <nav className="hidden flex-1 items-center space-x-4 text-sm font-medium md:flex">
@@ -34,34 +34,34 @@ export default function Home() {
               href="/schedule"
               className="text-foreground/60 transition-colors hover:text-foreground/80"
             >
-              Schedule
+              الجدول
             </Link>
             <Link
               href="/teams"
               className="text-foreground/60 transition-colors hover:text-foreground/80"
             >
-              Teams
+              الفرق
             </Link>
             <Link
               href="/players"
               className="text-foreground/60 transition-colors hover:text-foreground/80"
             >
-              Players
+              اللاعبون
             </Link>
             <Link
               href="/news"
               className="text-foreground/60 transition-colors hover:text-foreground/80"
             >
-              News
+              الأخبار
             </Link>
           </nav>
           <div className="flex flex-1 items-center justify-end space-x-4">
             <nav className="flex items-center space-x-2">
               <Button asChild variant="ghost" size="sm">
-                <Link href="/login">Login</Link>
+                <Link href="/login">تسجيل الدخول</Link>
               </Button>
               <Button asChild size="sm">
-                <Link href="/register">Sign Up</Link>
+                <Link href="/register">التسجيل</Link>
               </Button>
             </nav>
           </div>
@@ -82,15 +82,14 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
           <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
             <h1 className="font-headline text-5xl font-bold md:text-7xl">
-              The Glory of the Cup
+              مجد الكأس
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-slate-200">
-              Experience the passion, drama, and excitement of the premier
-              football tournament.
+              عش الشغف والدراما والإثارة في البطولة الكروية الأولى.
             </p>
             <Button asChild size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90">
               <Link href="/schedule">
-                View Full Schedule <ArrowRight className="ml-2 h-5 w-5" />
+                عرض الجدول الكامل <ArrowLeft className="mr-2 h-5 w-5" />
               </Link>
             </Button>
           </div>
@@ -98,7 +97,7 @@ export default function Home() {
 
         <section className="container py-12 md:py-20">
           <h2 className="mb-8 text-center font-headline text-3xl font-bold md:text-4xl">
-            Upcoming Matches
+            المباريات القادمة
           </h2>
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {matches.slice(0, 3).map((match) => (
@@ -107,7 +106,7 @@ export default function Home() {
           </div>
           <div className="mt-8 text-center">
             <Button asChild variant="outline">
-              <Link href="/schedule">View All Matches</Link>
+              <Link href="/schedule">عرض جميع المباريات</Link>
             </Button>
           </div>
         </section>
@@ -115,7 +114,7 @@ export default function Home() {
         <section className="bg-secondary py-12 md:py-20">
           <div className="container">
             <h2 className="mb-8 text-center font-headline text-3xl font-bold md:text-4xl">
-              Latest News
+              آخر الأخبار
             </h2>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {news.slice(0, 3).map((article) => (
@@ -124,7 +123,7 @@ export default function Home() {
             </div>
             <div className="mt-8 text-center">
               <Button asChild variant="outline">
-                <Link href="/news">Read More News</Link>
+                <Link href="/news">قراءة المزيد من الأخبار</Link>
               </Button>
             </div>
           </div>
@@ -136,30 +135,29 @@ export default function Home() {
               <Card className="bg-transparent border-0 shadow-none">
                 <CardHeader>
                   <CardTitle className="font-headline text-3xl md:text-4xl">
-                    Your Personalized Hub
+                    مركزك المخصص
                   </CardTitle>
                   <CardDescription className="text-base">
-                    Create an account to follow your favorite teams and
-                    players, receive notifications, and never miss a moment.
+                    أنشئ حسابًا لمتابعة فرقك ولاعبيك المفضلين، وتلقي الإشعارات، ولا تفوت أي لحظة.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
                     <li className="flex items-center">
-                      <ArrowRight className="mr-2 h-4 w-4 text-accent" />
-                      Follow your favorite teams
+                      <ArrowLeft className="ml-2 h-4 w-4 text-accent" />
+                      تابع فرقك المفضلة
                     </li>
                     <li className="flex items-center">
-                      <ArrowRight className="mr-2 h-4 w-4 text-accent" />
-                      Get live match updates
+                      <ArrowLeft className="ml-2 h-4 w-4 text-accent" />
+                      احصل على تحديثات المباريات المباشرة
                     </li>
                     <li className="flex items-center">
-                      <ArrowRight className="mr-2 h-4 w-4 text-accent" />
-                      Personalized news feed
+                      <ArrowLeft className="ml-2 h-4 w-4 text-accent" />
+                      موجز أخبار مخصص
                     </li>
                   </ul>
                   <Button asChild size="lg" className="mt-6">
-                    <Link href="/register">Create Account</Link>
+                    <Link href="/register">إنشاء حساب</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -167,7 +165,7 @@ export default function Home() {
             <div className="order-1 md:order-2">
               <Image
                 src="https://picsum.photos/seed/fans/600/400"
-                alt="Fans cheering in a stadium"
+                alt="مشجعون يهتفون في الملعب"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-lg"
@@ -182,7 +180,7 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <Logo className="h-6 w-6" />
             <p className="text-center text-sm text-muted-foreground md:text-left">
-              © {new Date().getFullYear()} SaudiCup Hub. All rights reserved.
+              © {new Date().getFullYear()} مركز كأس السعودية. جميع الحقوق محفوظة.
             </p>
           </div>
           <div className="flex items-center space-x-4">

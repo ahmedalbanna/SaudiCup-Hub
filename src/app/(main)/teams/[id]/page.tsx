@@ -46,48 +46,48 @@ export default function TeamProfilePage({ params }: { params: { id: string } }) 
           <div className="relative">
             <Image
               src={team.logoUrl}
-              alt={`${team.name} logo`}
+              alt={`شعار ${team.name}`}
               width={120}
               height={120}
               className="rounded-full mb-4"
               data-ai-hint="team logo"
             />
-            <div className="absolute top-0 right-[-50px]">
+            <div className="absolute top-0 left-[-50px]">
               <Button variant="outline" size="sm" onClick={() => setIsFollowing(!isFollowing)}>
-                {isFollowing ? <ShieldCheck className="mr-2 h-4 w-4" /> : <ShieldPlus className="mr-2 h-4 w-4" />}
-                {isFollowing ? 'Following' : 'Follow'}
+                {isFollowing ? <ShieldCheck className="ml-2 h-4 w-4" /> : <ShieldPlus className="ml-2 h-4 w-4" />}
+                {isFollowing ? 'تتابع' : 'متابعة'}
               </Button>
             </div>
           </div>
           <CardTitle className="font-headline text-4xl">{team.name}</CardTitle>
           <CardDescription>
-            View the team's roster, recent performance, and news.
+            عرض قائمة الفريق وأدائه الأخير والأخبار.
           </CardDescription>
         </CardHeader>
       </Card>
 
-      <Tabs defaultValue="roster">
+      <Tabs defaultValue="roster" dir="rtl">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="roster">Roster</TabsTrigger>
-          <TabsTrigger value="matches">Matches</TabsTrigger>
-          <TabsTrigger value="news">News</TabsTrigger>
+          <TabsTrigger value="roster">قائمة اللاعبين</TabsTrigger>
+          <TabsTrigger value="matches">المباريات</TabsTrigger>
+          <TabsTrigger value="news">الأخبار</TabsTrigger>
         </TabsList>
         <TabsContent value="roster">
           <Card>
             <CardHeader>
-              <CardTitle>Player Roster</CardTitle>
+              <CardTitle>قائمة لاعبي الفريق</CardTitle>
               <CardDescription>
-                The complete list of players for {team.name}.
+                القائمة الكاملة للاعبي فريق {team.name}.
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[80px]">Photo</TableHead>
-                    <TableHead className="w-[100px]">Number</TableHead>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Position</TableHead>
+                    <TableHead className="w-[80px]">الصورة</TableHead>
+                    <TableHead className="w-[100px]">الرقم</TableHead>
+                    <TableHead>الاسم</TableHead>
+                    <TableHead>المركز</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -112,8 +112,8 @@ export default function TeamProfilePage({ params }: { params: { id: string } }) 
         <TabsContent value="matches">
            <Card>
              <CardHeader>
-                <CardTitle>Recent & Upcoming Matches</CardTitle>
-                <CardDescription>A look at the recent results and future fixtures for {team.name}.</CardDescription>
+                <CardTitle>المباريات الأخيرة والقادمة</CardTitle>
+                <CardDescription>نظرة على النتائج الأخيرة والمباريات المستقبلية لفريق {team.name}.</CardDescription>
              </CardHeader>
              <CardContent className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {teamMatches.slice(0,6).map(match => (
@@ -125,14 +125,14 @@ export default function TeamProfilePage({ params }: { params: { id: string } }) 
         <TabsContent value="news">
             <Card>
                 <CardHeader>
-                    <CardTitle>Team News</CardTitle>
-                    <CardDescription>The latest articles and updates related to {team.name}.</CardDescription>
+                    <CardTitle>أخبار الفريق</CardTitle>
+                    <CardDescription>آخر المقالات والتحديثات المتعلقة بفريق {team.name}.</CardDescription>
                 </Header>
                 <CardContent className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {teamNews.length > 0 ? teamNews.map(article => (
                         <NewsCard key={article.id} article={article} />
                     )) : (
-                        <p className="col-span-full text-center text-muted-foreground">No news found for {team.name}.</p>
+                        <p className="col-span-full text-center text-muted-foreground">لم يتم العثور على أخبار لفريق {team.name}.</p>
                     )}
                 </CardContent>
             </Card>

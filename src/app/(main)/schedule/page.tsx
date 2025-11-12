@@ -14,15 +14,15 @@ export default function SchedulePage() {
     <>
       <div className="flex items-center justify-between">
         <h1 className="font-headline text-lg font-semibold md:text-2xl">
-          Match Schedule
+          جدول المباريات
         </h1>
         <div className="flex items-center gap-2">
           <Select defaultValue="all">
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Filter by team" />
+              <SelectValue placeholder="تصفية حسب الفريق" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Teams</SelectItem>
+              <SelectItem value="all">كل الفرق</SelectItem>
               {teams.map((team) => (
                 <SelectItem key={team.id} value={team.id}>
                   {team.name}
@@ -30,7 +30,7 @@ export default function SchedulePage() {
               ))}
             </SelectContent>
           </Select>
-          <Button variant="outline">Sort by Date</Button>
+          <Button variant="outline">فرز حسب التاريخ</Button>
         </div>
       </div>
       <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

@@ -10,13 +10,12 @@ export default function AdminPage() {
             <Shield className="h-8 w-8 text-primary" />
           </div>
           <CardTitle className="font-headline text-2xl">
-            Admin Dashboard
+            لوحة تحكم المسؤول
           </CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-center text-muted-foreground">
-            This is a secure area for administrators to manage website content,
-            users, and system settings.
+            هذه منطقة آمنة للمسؤولين لإدارة محتوى الموقع والمستخدمين وإعدادات النظام.
           </p>
         </CardContent>
       </Card>

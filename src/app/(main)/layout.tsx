@@ -50,7 +50,7 @@ export default function MainLayout({
 }) {
   return (
     <SidebarProvider>
-        <Sidebar>
+        <Sidebar side="right">
             <SidebarHeader>
                 <Logo className="h-8 w-8 text-primary" />
             </SidebarHeader>
@@ -64,30 +64,30 @@ export default function MainLayout({
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" className="justify-start gap-2 p-2 h-auto w-full">
                          <Avatar className="h-8 w-8">
-                            <AvatarImage src="https://picsum.photos/seed/user1/100/100" alt="User avatar" data-ai-hint="female portrait" />
-                            <AvatarFallback>SA</AvatarFallback>
+                            <AvatarImage src="https://picsum.photos/seed/user1/100/100" alt="صورة المستخدم" data-ai-hint="female portrait" />
+                            <AvatarFallback>س أ</AvatarFallback>
                         </Avatar>
-                        <div className="text-left hidden group-data-[collapsible=icon]:hidden">
-                            <p className="text-sm font-medium">Sara Al-Ahmed</p>
+                        <div className="text-right hidden group-data-[collapsible=icon]:hidden">
+                            <p className="text-sm font-medium">سارة الأحمد</p>
                             <p className="text-xs text-muted-foreground">sara@example.com</p>
                         </div>
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="w-56" align="end" forceMount>
                       <DropdownMenuLabel className="font-normal">
-                        <div className="flex flex-col space-y-1">
-                          <p className="text-sm font-medium leading-none">Sara Al-Ahmed</p>
+                        <div className="flex flex-col space-y-1 text-right">
+                          <p className="text-sm font-medium leading-none">سارة الأحمد</p>
                           <p className="text-xs leading-none text-muted-foreground">
                             sara@example.com
                           </p>
                         </div>
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem>Profile</DropdownMenuItem>
-                      <DropdownMenuItem>Settings</DropdownMenuItem>
+                      <DropdownMenuItem>الملف الشخصي</DropdownMenuItem>
+                      <DropdownMenuItem>الإعدادات</DropdownMenuItem>
                       <DropdownMenuSeparator />
                        <DropdownMenuItem asChild>
-                        <Link href="/">Log out</Link>
+                        <Link href="/">تسجيل الخروج</Link>
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
@@ -103,10 +103,10 @@ export default function MainLayout({
                         className="shrink-0 md:hidden"
                         >
                         <PanelLeft className="h-5 w-5" />
-                        <span className="sr-only">Toggle navigation menu</span>
+                        <span className="sr-only">تبديل قائمة التنقل</span>
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="left" className="flex flex-col">
+                    <SheetContent side="right" className="flex flex-col">
                         <SidebarNav isMobile={true} />
                     </SheetContent>
                 </Sheet>
@@ -115,7 +115,7 @@ export default function MainLayout({
                 </div>
                 <Button variant="secondary" size="icon" className="rounded-full">
                     <Bell className="h-5 w-5" />
-                    <span className="sr-only">Toggle notifications</span>
+                    <span className="sr-only">تبديل الإشعارات</span>
                 </Button>
             </header>
             <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">

@@ -22,7 +22,7 @@ export function TeamCard({ team }: TeamCardProps) {
         />
         <h3 className="font-headline text-xl font-semibold">{team.name}</h3>
         <Button asChild variant="link" className="mt-2">
-          <Link href={`/teams/${team.id}`}>View Profile</Link>
+          <Link href={`/teams/${team.id}`}>عرض الملف الشخصي</Link>
         </Button>
       </CardContent>
     </Card>

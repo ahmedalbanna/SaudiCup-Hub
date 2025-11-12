@@ -20,42 +20,42 @@ export default function RegisterPage() {
          <Link href="/" className="flex items-center space-x-2">
             <Logo className="h-10 w-10" />
             <span className="text-2xl font-bold font-headline">
-              SaudiCup Hub
+              مركز كأس السعودية
             </span>
         </Link>
       </div>
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle className="font-headline text-2xl">Register</CardTitle>
+          <CardTitle className="font-headline text-2xl">التسجيل</CardTitle>
           <CardDescription>
-            Create your account to get a personalized experience.
+            أنشئ حسابك للحصول على تجربة مخصصة.
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="name">Name</Label>
-            <Input id="name" placeholder="Adel Al-Salem" required />
+            <Label htmlFor="name">الاسم</Label>
+            <Input id="name" placeholder="عادل السالم" required />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">البريد الإلكتروني</Label>
             <Input id="email" type="email" placeholder="m@example.com" required />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">كلمة المرور</Label>
             <Input id="password" type="password" required />
           </div>
         </CardContent>
         <CardFooter className="flex flex-col">
           <Button className="w-full" asChild>
-            <Link href="/dashboard">Create Account</Link>
+            <Link href="/dashboard">إنشاء حساب</Link>
           </Button>
            <p className="mt-4 text-center text-sm text-muted-foreground">
-            Already have an account?{' '}
+            هل لديك حساب بالفعل؟{' '}
             <Link
               href="/login"
               className="font-medium text-primary underline-offset-4 hover:underline"
             >
-              Login
+              تسجيل الدخول
             </Link>
           </p>
         </CardFooter>

@@ -33,60 +33,60 @@ export default function Dashboard() {
     <>
       <div className="flex items-center">
         <h1 className="font-headline text-lg font-semibold md:text-2xl">
-          My Dashboard
+          لوحة التحكم
         </h1>
       </div>
       <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Favorite Teams
+              الفرق المفضلة
             </CardTitle>
             <Shield className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">3</div>
             <p className="text-xs text-muted-foreground">
-              You are following 3 teams
+              أنت تتابع 3 فرق
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Favorite Players
+              اللاعبون المفضلون
             </CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{players.length}</div>
             <p className="text-xs text-muted-foreground">
-              You are following {players.length} players
+              أنت تتابع {players.length} لاعبين
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Upcoming Followed Matches
+              المباريات القادمة التي تتابعها
             </CardTitle>
             <Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">2</div>
             <p className="text-xs text-muted-foreground">
-              in the next 7 days
+              في الأيام السبعة القادمة
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">My Profile</CardTitle>
+            <CardTitle className="text-sm font-medium">ملفي الشخصي</CardTitle>
             <User className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <Button size="sm" variant="outline" asChild>
-                <Link href="#">Edit Profile</Link>
+                <Link href="#">تعديل الملف الشخصي</Link>
             </Button>
           </CardContent>
         </Card>
@@ -95,14 +95,14 @@ export default function Dashboard() {
         <Card className="xl:col-span-2">
           <CardHeader className="flex flex-row items-center">
             <div className="grid gap-2">
-              <CardTitle>Next Match For You</CardTitle>
+              <CardTitle>المباراة التالية لك</CardTitle>
               <CardDescription>
-                Upcoming match from one of your favorite teams.
+                مباراة قادمة من أحد فرقك المفضلة.
               </CardDescription>
             </div>
-            <Button asChild size="sm" className="ml-auto gap-1">
+            <Button asChild size="sm" className="mr-auto gap-1">
               <Link href="/schedule">
-                View All
+                عرض الكل
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </Button>
@@ -111,24 +111,24 @@ export default function Dashboard() {
              <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Match</TableHead>
-                  <TableHead className="hidden sm:table-cell">Date</TableHead>
-                  <TableHead className="hidden md:table-cell">Venue</TableHead>
-                  <TableHead className="text-right">Status</TableHead>
+                  <TableHead>المباراة</TableHead>
+                  <TableHead className="hidden sm:table-cell">التاريخ</TableHead>
+                  <TableHead className="hidden md:table-cell">الملعب</TableHead>
+                  <TableHead className="text-left">الحالة</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {matches.filter(m => m.status === 'scheduled').slice(0, 5).map(match => (
                     <TableRow key={match.id}>
                         <TableCell>
-                            <div className="font-medium">{match.team1.name} vs {match.team2.name}</div>
+                            <div className="font-medium">{match.team1.name} ضد {match.team2.name}</div>
                         </TableCell>
                          <TableCell className="hidden sm:table-cell">
-                            {new Date(match.date).toLocaleDateString()}
+                            {new Date(match.date).toLocaleDateString('ar-SA')}
                         </TableCell>
                         <TableCell className="hidden md:table-cell">{match.venue}</TableCell>
-                        <TableCell className="text-right">
-                           <Badge variant="outline">{match.status.charAt(0).toUpperCase() + match.status.slice(1)}</Badge>
+                        <TableCell className="text-left">
+                           <Badge variant="outline">{match.status === 'scheduled' ? 'مجدولة' : match.status}</Badge>
                         </TableCell>
                     </TableRow>
                 ))}
@@ -138,9 +138,9 @@ export default function Dashboard() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Favorite Players</CardTitle>
+            <CardTitle>اللاعبون المفضلون</CardTitle>
             <CardDescription>
-              A quick look at players you follow.
+              نظرة سريعة على اللاعبين الذين تتابعهم.
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-8">
@@ -158,14 +158,14 @@ export default function Dashboard() {
                         {teams.find(t => t.id === player.teamId)?.name}
                     </p>
                     </div>
-                    <div className="ml-auto font-medium">
-                        <Button variant="outline" size="sm" onClick={() => handleUnfollow(player.id)}>Unfollow</Button>
+                    <div className="mr-auto font-medium">
+                        <Button variant="outline" size="sm" onClick={() => handleUnfollow(player.id)}>إلغاء المتابعة</Button>
                     </div>
                 </div>
             ))}
              {players.length === 0 && (
               <p className="text-sm text-muted-foreground text-center">
-                You are not following any players yet.
+                أنت لا تتابع أي لاعب حتى الآن.
               </p>
             )}
           </CardContent>

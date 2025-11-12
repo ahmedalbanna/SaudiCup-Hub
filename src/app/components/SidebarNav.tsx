@@ -21,13 +21,13 @@ import { Logo } from '@/components/Logo';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { href: '/schedule', icon: CalendarDays, label: 'Schedule' },
-  { href: '/teams', icon: Shield, label: 'Teams' },
-  { href: '/players', icon: Users, label: 'Players' },
-  { href: '/news', icon: Newspaper, label: 'News' },
-  { href: '/stadiums', icon: Landmark, label: 'Stadiums' },
-  { href: '/gallery', icon: GalleryHorizontal, label: 'Gallery' },
+  { href: '/dashboard', icon: LayoutDashboard, label: 'لوحة التحكم' },
+  { href: '/schedule', icon: CalendarDays, label: 'الجدول' },
+  { href: '/teams', icon: Shield, label: 'الفرق' },
+  { href: '/players', icon: Users, label: 'اللاعبون' },
+  { href: '/news', icon: Newspaper, label: 'الأخبار' },
+  { href: '/stadiums', icon: Landmark, label: 'الملاعب' },
+  { href: '/gallery', icon: GalleryHorizontal, label: 'المعرض' },
 ];
 
 export function SidebarNav({ isMobile = false }: { isMobile?: boolean }) {
@@ -41,7 +41,7 @@ export function SidebarNav({ isMobile = false }: { isMobile?: boolean }) {
                 className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
             >
                 <Logo className="h-5 w-5 transition-all group-hover:scale-110 text-primary-foreground" />
-                <span className="sr-only">SaudiCup Hub</span>
+                <span className="sr-only">مركز كأس السعودية</span>
             </Link>
             {navItems.map((item) => (
             <Link
@@ -77,7 +77,7 @@ export function SidebarNav({ isMobile = false }: { isMobile?: boolean }) {
               <span className="sr-only">{item.label}</span>
             </Link>
           </TooltipTrigger>
-          <TooltipContent side="right">{item.label}</TooltipContent>
+          <TooltipContent side="left">{item.label}</TooltipContent>
         </Tooltip>
       ))}
     </TooltipProvider>

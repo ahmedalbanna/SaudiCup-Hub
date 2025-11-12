@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { ArrowRight } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 type NewsCardProps = {
   article: NewsArticle;
@@ -41,7 +41,7 @@ export function NewsCard({ article }: NewsCardProps) {
       </CardContent>
       <CardFooter className="flex justify-between items-center text-sm">
         <p className="text-muted-foreground">
-          {articleDate.toLocaleDateString('en-US', {
+          {articleDate.toLocaleDateString('ar-SA', {
             month: 'long',
             day: 'numeric',
             year: 'numeric',
@@ -51,7 +51,7 @@ export function NewsCard({ article }: NewsCardProps) {
           href="#"
           className="flex items-center font-semibold text-primary hover:text-primary/80"
         >
-          Read More <ArrowRight className="ml-1 h-4 w-4" />
+          اقرأ المزيد <ArrowLeft className="mr-1 h-4 w-4" />
         </Link>
       </CardFooter>
     </Card>

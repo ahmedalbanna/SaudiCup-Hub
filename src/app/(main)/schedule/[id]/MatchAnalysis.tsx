@@ -65,9 +65,9 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
     <div className="grid gap-6 lg:grid-cols-2">
       <Card>
         <CardHeader>
-          <CardTitle>AI-Powered Match Analysis</CardTitle>
+          <CardTitle>تحليل المباريات بالذكاء الاصطناعي</CardTitle>
           <CardDescription>
-            Input match data to generate insights and predict outcomes.
+            أدخل بيانات المباراة لتوليد رؤى وتوقع النتائج.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -78,7 +78,7 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
                 name="historicalPerformance"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Historical Performance</FormLabel>
+                    <FormLabel>الأداء التاريخي</FormLabel>
                     <FormControl>
                       <Textarea rows={5} {...field} />
                     </FormControl>
@@ -91,7 +91,7 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
                 name="teamLineups"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Team Lineups</FormLabel>
+                    <FormLabel>تشكيلات الفرق</FormLabel>
                     <FormControl>
                       <Textarea rows={5} {...field} />
                     </FormControl>
@@ -104,7 +104,7 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
                 name="liveScores"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Live Scores / Status</FormLabel>
+                    <FormLabel>النتائج المباشرة / الحالة</FormLabel>
                     <FormControl>
                       <Textarea rows={2} {...field} />
                     </FormControl>
@@ -114,11 +114,11 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
               />
               <Button type="submit" disabled={isLoading} className="w-full">
                 {isLoading ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2 className="ml-2 h-4 w-4 animate-spin" />
                 ) : (
-                  <BrainCircuit className="mr-2 h-4 w-4" />
+                  <BrainCircuit className="ml-2 h-4 w-4" />
                 )}
-                Analyze Match
+                تحليل المباراة
               </Button>
             </form>
           </Form>
@@ -130,7 +130,7 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
             <Card>
               <CardHeader className="flex flex-row items-center gap-2">
                 <Lightbulb className="h-5 w-5 text-accent" />
-                <CardTitle>Key Insights</CardTitle>
+                <CardTitle>الرؤى الرئيسية</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <Skeleton className="h-4 w-full" />
@@ -141,7 +141,7 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
             <Card>
               <CardHeader className="flex flex-row items-center gap-2">
                 <BrainCircuit className="h-5 w-5 text-primary" />
-                <CardTitle>Potential Outcomes</CardTitle>
+                <CardTitle>النتائج المحتملة</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <Skeleton className="h-4 w-[80%]" />
@@ -155,7 +155,7 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
             <Card>
               <CardHeader className="flex flex-row items-center gap-2">
                 <Lightbulb className="h-5 w-5 text-accent" />
-                <CardTitle>Key Insights</CardTitle>
+                <CardTitle>الرؤى الرئيسية</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="whitespace-pre-wrap">{analysisResult.keyInsights}</p>
@@ -164,7 +164,7 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
             <Card>
               <CardHeader className="flex flex-row items-center gap-2">
                 <BrainCircuit className="h-5 w-5 text-primary" />
-                <CardTitle>Potential Outcomes</CardTitle>
+                <CardTitle>النتائج المحتملة</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="whitespace-pre-wrap">{analysisResult.potentialOutcomes}</p>
@@ -175,3 +175,4 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
       </div>
     </div>
   );
+}

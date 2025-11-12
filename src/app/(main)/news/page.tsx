@@ -15,20 +15,20 @@ export default function NewsPage() {
     <>
       <div className="flex items-center justify-between">
         <h1 className="font-headline text-lg font-semibold md:text-2xl">
-          News & Articles
+          الأخبار والمقالات
         </h1>
         <div className="flex items-center gap-2">
-            <Input placeholder="Search articles..." className="w-48"/>
+            <Input placeholder="ابحث في المقالات..." className="w-48"/>
           <Select defaultValue="all">
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Filter by category" />
+              <SelectValue placeholder="تصفية حسب الفئة" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Categories</SelectItem>
-              <SelectItem value="match-report">Match Report</SelectItem>
-              <SelectItem value="transfers">Transfers</SelectItem>
-              <SelectItem value="features">Features</SelectItem>
-              <SelectItem value="awards">Awards</SelectItem>
+              <SelectItem value="all">جميع الفئات</SelectItem>
+              <SelectItem value="match-report">تقرير المباراة</SelectItem>
+              <SelectItem value="transfers">الانتقالات</SelectItem>
+              <SelectItem value="features">مقالات خاصة</SelectItem>
+              <SelectItem value="awards">الجوائز</SelectItem>
             </SelectContent>
           </Select>
         </div>

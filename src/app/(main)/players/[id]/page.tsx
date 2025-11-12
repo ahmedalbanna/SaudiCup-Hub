@@ -33,11 +33,11 @@ export default function PlayerProfilePage({ params }: { params: { id: string } }
   const team = teams.find((t) => t.id === player.teamId);
 
   const stats = [
-      { label: 'Appearances', value: 120 },
-      { label: 'Goals', value: 45 },
-      { label: 'Assists', value: 30 },
-      { label: 'Yellow Cards', value: 15 },
-      { label: 'Red Cards', value: 1 },
+      { label: 'المشاركات', value: 120 },
+      { label: 'الأهداف', value: 45 },
+      { label: 'التمريرات الحاسمة', value: 30 },
+      { label: 'البطاقات الصفراء', value: 15 },
+      { label: 'البطاقات الحمراء', value: 1 },
   ]
 
   return (
@@ -47,7 +47,7 @@ export default function PlayerProfilePage({ params }: { params: { id: string } }
             <div className="relative h-32 w-32">
                  <Image
                     src={player.imageUrl}
-                    alt={`Portrait of ${player.name}`}
+                    alt={`صورة ${player.name}`}
                     fill
                     className="rounded-full object-cover border-4 border-background"
                     data-ai-hint="male portrait"
@@ -61,10 +61,10 @@ export default function PlayerProfilePage({ params }: { params: { id: string } }
                         {team.name}
                     </CardDescription>
                 )}
-                 <div className="absolute top-2 right-[-60px]">
+                 <div className="absolute top-2 left-[-60px]">
                   <Button variant="outline" size="sm" onClick={() => setIsFollowing(!isFollowing)}>
-                    {isFollowing ? <Star className="mr-2 h-4 w-4 fill-current" /> : <UserPlus className="mr-2 h-4 w-4" />}
-                    {isFollowing ? 'Following' : 'Follow'}
+                    {isFollowing ? <Star className="ml-2 h-4 w-4 fill-current" /> : <UserPlus className="ml-2 h-4 w-4" />}
+                    {isFollowing ? 'تتابع' : 'متابعة'}
                   </Button>
                 </div>
             </div>
@@ -73,20 +73,20 @@ export default function PlayerProfilePage({ params }: { params: { id: string } }
             <Separator />
              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center py-4">
                 <div>
-                    <p className="text-sm text-muted-foreground">Position</p>
+                    <p className="text-sm text-muted-foreground">المركز</p>
                     <p className="font-semibold flex items-center justify-center gap-1"><User className="h-4 w-4"/> {player.position}</p>
                 </div>
                  <div>
-                    <p className="text-sm text-muted-foreground">Jersey Number</p>
+                    <p className="text-sm text-muted-foreground">رقم القميص</p>
                     <p className="font-semibold flex items-center justify-center gap-1"><Shirt className="h-4 w-4"/> #{player.number}</p>
                 </div>
                 <div>
-                    <p className="text-sm text-muted-foreground">Age</p>
-                    <p className="font-semibold flex items-center justify-center gap-1"><Calendar className="h-4 w-4"/> 28</p>
+                    <p className="text-sm text-muted-foreground">العمر</p>
+                    <p className="font-semibold flex items-center justify-center gap-1"><Calendar className="h-4 w-4"/> ٢٨</p>
                 </div>
                  <div>
-                    <p className="text-sm text-muted-foreground">Nationality</p>
-                    <p className="font-semibold flex items-center justify-center gap-1"><Target className="h-4 w-4"/> Saudi</p>
+                    <p className="text-sm text-muted-foreground">الجنسية</p>
+                    <p className="font-semibold flex items-center justify-center gap-1"><Target className="h-4 w-4"/> سعودي</p>
                 </div>
             </div>
         </CardContent>
@@ -94,24 +94,24 @@ export default function PlayerProfilePage({ params }: { params: { id: string } }
 
       <Card>
         <CardHeader>
-          <CardTitle>Career Statistics</CardTitle>
+          <CardTitle>إحصائيات المسيرة</CardTitle>
           <CardDescription>
-            An overview of {player.name}'s performance.
+            نظرة عامة على أداء {player.name}.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Statistic</TableHead>
-                <TableHead className="text-right">Value</TableHead>
+                <TableHead>الإحصائية</TableHead>
+                <TableHead className="text-left">القيمة</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
                 {stats.map(stat => (
                     <TableRow key={stat.label}>
                         <TableCell className="font-medium">{stat.label}</TableCell>
-                        <TableCell className="text-right">{stat.value}</TableCell>
+                        <TableCell className="text-left">{stat.value}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>
@@ -121,23 +121,23 @@ export default function PlayerProfilePage({ params }: { params: { id: string } }
       
       <Card>
         <CardHeader>
-          <CardTitle>Career History</CardTitle>
+          <CardTitle>تاريخ المسيرة</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             <div>
-              <p className="font-semibold">2022 - Present</p>
+              <p className="font-semibold">2022 - حتى الآن</p>
               <p className="text-muted-foreground">{team?.name}</p>
             </div>
             <Separator />
             <div>
               <p className="font-semibold">2018 - 2022</p>
-              <p className="text-muted-foreground">Al-Hilal</p>
+              <p className="text-muted-foreground">الهلال</p>
             </div>
              <Separator />
              <div>
               <p className="font-semibold">2016 - 2018</p>
-              <p className="text-muted-foreground">Al-Ahli</p>
+              <p className="text-muted-foreground">الأهلي</p>
             </div>
           </div>
         </CardContent>

@@ -17,16 +17,16 @@ type CommentaryItem = {
 };
 
 const mockCommentaries = [
-  "A great pass from the midfield finds the striker in a dangerous position!",
-  "The defender makes a crucial tackle to stop the attack.",
-  "What a save by the goalkeeper! That was a certain goal.",
-  "The crowd is on their feet as the home team pushes forward.",
-  "Corner kick for the visiting team. Can they make it count?",
-  "The shot from distance goes just wide of the post.",
-  "A yellow card is shown for a late challenge in the midfield.",
-  "Incredible piece of skill from the winger to beat his man.",
-  "The teams are locked in a tactical battle, neither giving an inch.",
-  "A long ball over the top, but the goalkeeper is quick to come out and claim it."
+  "تمريرة رائعة من خط الوسط تجد المهاجم في وضع خطير!",
+  "المدافع يقوم بتدخل حاسم لإيقاف الهجمة.",
+  "يا له من تصدي من حارس المرمى! لقد كان هدفًا مؤكدًا.",
+  "الجماهير تقف على أقدامها مع تقدم الفريق المضيف إلى الأمام.",
+  "ركلة ركنية للفريق الزائر. هل يمكنهم استغلالها؟",
+  "تسديدة من مسافة بعيدة تمر بجوار القائم بقليل.",
+  "بطاقة صفراء تظهر بسبب تدخل متأخر في خط الوسط.",
+  "قطعة فنية مذهلة من الجناح ليتغلب على رجله.",
+  "الفريقان في معركة تكتيكية، لا أحد يتنازل عن شبر.",
+  "كرة طويلة فوق القمة، لكن حارس المرمى يخرج بسرعة ويمسك بها."
 ];
 
 
@@ -86,23 +86,23 @@ export default function LiveCommentary({ match }: { match: Match }) {
       <CardHeader>
         <div className="flex justify-between items-center">
             <div>
-                <CardTitle>Live Commentary</CardTitle>
+                <CardTitle>التعليق المباشر</CardTitle>
                 <CardDescription>
-                Play-by-play updates for the match.
+                تحديثات لحظة بلحظة للمباراة.
                 </CardDescription>
             </div>
             <div>
                 {isStreaming ? (
                 <Button onClick={stopStreaming} variant="destructive" disabled={!isStreaming}>
-                    <Square className="mr-2 h-4 w-4" />
-                    Stop Live Feed
+                    <Square className="ml-2 h-4 w-4" />
+                    إيقاف البث المباشر
                 </Button>
                 ) : (
                 <Button onClick={startStreaming} disabled={isStreaming || match.status !== 'live'}>
                      {match.status !== 'live' ? (
-                        <>Not Live</>
+                        <>غير مباشر</>
                      ) : (
-                        <><PlayCircle className="mr-2 h-4 w-4" /> Start Live Feed</>
+                        <><PlayCircle className="ml-2 h-4 w-4" /> بدء البث المباشر</>
                      )}
                 </Button>
                 )}
@@ -112,10 +112,10 @@ export default function LiveCommentary({ match }: { match: Match }) {
       <CardContent>
         {commentary.length === 0 && !isStreaming ? (
             <div className="text-center text-muted-foreground py-12">
-                {match.status === 'live' ? 'Click "Start Live Feed" to get real-time commentary.' : 'Live commentary will be available when the match is live.'}
+                {match.status === 'live' ? 'انقر على "بدء البث المباشر" للحصول على تعليق في الوقت الفعلي.' : 'سيكون التعليق المباشر متاحًا عندما تكون المباراة مباشرة.'}
             </div>
         ) : (
-        <div className="space-y-4 max-h-[500px] overflow-y-auto pr-4">
+        <div className="space-y-4 max-h-[500px] overflow-y-auto pl-4">
           {isLoading && commentary.length === 0 && (
              <div className="flex items-center justify-center py-8">
                 <Loader2 className="h-8 w-8 animate-spin text-primary" />
@@ -124,7 +124,7 @@ export default function LiveCommentary({ match }: { match: Match }) {
           {commentary.map((item, index) => (
             <div key={index} className="flex gap-4">
               <div className="font-mono text-xs text-muted-foreground pt-1 w-20">{item.timestamp}</div>
-              <div className="flex-1 border-l-2 border-primary pl-4">
+              <div className="flex-1 border-r-2 border-primary pr-4">
                 <p>{item.comment}</p>
               </div>
             </div>

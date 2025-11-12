@@ -15,7 +15,7 @@ export default function StadiumsPage() {
     <>
       <div className="flex items-center">
         <h1 className="font-headline text-lg font-semibold md:text-2xl">
-          Venues & Stadiums
+          الملاعب والأماكن
         </h1>
       </div>
       <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -25,7 +25,7 @@ export default function StadiumsPage() {
               <div className="relative aspect-video">
                 <Image
                   src={stadium.imageUrl}
-                  alt={`Image of ${stadium.name}`}
+                  alt={`صورة ${stadium.name}`}
                   fill
                   className="rounded-t-lg object-cover"
                   data-ai-hint="stadium exterior"
@@ -37,17 +37,17 @@ export default function StadiumsPage() {
                 {stadium.name}
               </CardTitle>
               <div className="mt-2 flex items-center text-sm text-muted-foreground">
-                <MapPin className="mr-1.5 h-4 w-4" />
+                <MapPin className="ml-1.5 h-4 w-4" />
                 <span>{stadium.city}</span>
               </div>
             </CardContent>
             <CardFooter className="p-4 pt-0">
               <div className="flex items-center text-sm">
-                <Users className="mr-1.5 h-4 w-4 text-muted-foreground" />
+                <Users className="ml-1.5 h-4 w-4 text-muted-foreground" />
                 <span className="font-medium">
-                  {stadium.capacity.toLocaleString()}
+                  {stadium.capacity.toLocaleString('ar-SA')}
                 </span>
-                <span className="ml-1 text-muted-foreground">Capacity</span>
+                <span className="mr-1 text-muted-foreground">السعة</span>
               </div>
             </CardFooter>
           </Card>

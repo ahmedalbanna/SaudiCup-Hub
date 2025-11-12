@@ -41,17 +41,17 @@ export default async function MatchDetailsPage({
   const team2Players = players.filter((p) => p.teamId === match.team2.id);
 
   const historicalPerformance = `
-- ${match.team1.name}: Last 5 games: W-W-L-D-W. Strong attacking record, averaging 2.4 goals per game.
-- ${match.team2.name}: Last 5 games: W-D-L-W-D. Known for a solid defense, conceding only 0.8 goals per game on average.
-- Head-to-head: In the last 3 encounters, ${match.team1.name} won 2, ${match.team2.name} won 1.
+- ${match.team1.name}: آخر 5 مباريات: ف-ف-خ-ت-ف. سجل هجومي قوي بمعدل 2.4 هدف في المباراة.
+- ${match.team2.name}: آخر 5 مباريات: ف-ت-خ-ف-ت. معروف بدفاعه الصلب، حيث استقبل 0.8 هدف فقط في المباراة الواحدة.
+- المواجهات المباشرة: في آخر 3 مواجهات، فاز ${match.team1.name} في مباراتين، وفاز ${match.team2.name} في واحدة.
 `;
 
   const teamLineups = `
-- ${match.team1.name} (4-3-3): ${team1Players.slice(0,2).map(p => p.name).join(', ')} and others. Key player ${team1Players[0].name} is in top form.
-- ${match.team2.name} (4-4-2): ${team2Players.slice(0,2).map(p => p.name).join(', ')} and others. Missing their main defender due to injury.
+- ${match.team1.name} (4-3-3): ${team1Players.slice(0,2).map(p => p.name).join(', ')} وآخرون. اللاعب الرئيسي ${team1Players[0].name} في أفضل حالاته.
+- ${match.team2.name} (4-4-2): ${team2Players.slice(0,2).map(p => p.name).join(', ')} وآخرون. يفتقدون مدافعهم الرئيسي بسبب الإصابة.
 `;
 
-  const liveScores = match.score ? `Current score is ${match.team1.name} ${match.score} ${match.team2.name}. Match is in the 80th minute.` : `Match has not started.`;
+  const liveScores = match.score ? `النتيجة الحالية هي ${match.team1.name} ${match.score} ${match.team2.name}. المباراة في الدقيقة 80.` : `المباراة لم تبدأ بعد.`;
 
 
   async function getAnalysis(data: AnalyzeMatchInput) {
@@ -62,14 +62,14 @@ export default async function MatchDetailsPage({
 
   return (
     <div className="mx-auto grid w-full max-w-6xl gap-2">
-      <h1 className="sr-only">Match Details</h1>
+      <h1 className="sr-only">تفاصيل المباراة</h1>
       <Card>
         <CardHeader className="p-4">
           <div className="flex items-center justify-around">
             <div className="flex flex-col items-center gap-2 text-center w-1/3">
               <Image
                 src={match.team1.logoUrl}
-                alt={`${match.team1.name} logo`}
+                alt={`شعار ${match.team1.name}`}
                 width={80}
                 height={80}
                 className="rounded-full"
@@ -81,15 +81,15 @@ export default async function MatchDetailsPage({
             </div>
             <div className="text-center w-1/3">
               <p className="font-bold text-4xl text-primary">
-                {match.score ?? 'vs'}
+                {match.score ?? 'ضد'}
               </p>
               <p className="text-sm text-muted-foreground">{match.venue}</p>
-              <p className="text-sm text-muted-foreground">{new Date(match.date).toLocaleDateString()}</p>
+              <p className="text-sm text-muted-foreground">{new Date(match.date).toLocaleDateString('ar-SA')}</p>
             </div>
             <div className="flex flex-col items-center gap-2 text-center w-1/3">
               <Image
                 src={match.team2.logoUrl}
-                alt={`${match.team2.name} logo`}
+                alt={`شعار ${match.team2.name}`}
                 width={80}
                 height={80}
                 className="rounded-full"
@@ -102,13 +102,13 @@ export default async function MatchDetailsPage({
           </div>
         </CardHeader>
       </Card>
-      <Tabs defaultValue="commentary">
+      <Tabs defaultValue="commentary" dir="rtl">
         <TabsList className="grid w-full grid-cols-5">
-          <TabsTrigger value="commentary">Live Commentary</TabsTrigger>
-          <TabsTrigger value="analysis">AI Analysis</TabsTrigger>
-          <TabsTrigger value="lineups">Lineups</TabsTrigger>
-          <TabsTrigger value="stats">Statistics</TabsTrigger>
-          <TabsTrigger value="h2h">H2H</TabsTrigger>
+          <TabsTrigger value="commentary">التعليق المباشر</TabsTrigger>
+          <TabsTrigger value="analysis">تحليل AI</TabsTrigger>
+          <TabsTrigger value="lineups">التشكيلات</TabsTrigger>
+          <TabsTrigger value="stats">الإحصائيات</TabsTrigger>
+          <TabsTrigger value="h2h">المواجهات</TabsTrigger>
         </TabsList>
          <TabsContent value="commentary">
           <LiveCommentary match={match} />
@@ -122,9 +122,9 @@ export default async function MatchDetailsPage({
         <TabsContent value="lineups">
           <Card>
             <CardHeader>
-              <CardTitle>Team Lineups</CardTitle>
+              <CardTitle>تشكيلات الفرق</CardTitle>
               <CardDescription>
-                Starting players for both teams.
+                اللاعبون الأساسيون لكلا الفريقين.
               </CardDescription>
             </CardHeader>
             <CardContent className="grid md:grid-cols-2 gap-6">
@@ -132,7 +132,7 @@ export default async function MatchDetailsPage({
                 <h3 className="font-semibold mb-2">{match.team1.name} (4-3-3)</h3>
                 <div className="space-y-1">
                   {team1Players.map(p => (
-                    <div key={p.id} className="text-sm">#{p.number} {p.name} ({p.position})</div>
+                    <div key={p.id} className="text-sm"># {p.number} {p.name} ({p.position})</div>
                   ))}
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default async function MatchDetailsPage({
                 <h3 className="font-semibold mb-2">{match.team2.name} (4-4-2)</h3>
                 <div className="space-y-1">
                   {team2Players.map(p => (
-                    <div key={p.id} className="text-sm">#{p.number} {p.name} ({p.position})</div>
+                    <div key={p.id} className="text-sm"># {p.number} {p.name} ({p.position})</div>
                   ))}
                 </div>
               </div>
@@ -150,24 +150,24 @@ export default async function MatchDetailsPage({
         <TabsContent value="stats">
            <Card>
             <CardHeader>
-                <CardTitle>Match Statistics</CardTitle>
+                <CardTitle>إحصائيات المباراة</CardTitle>
             </CardHeader>
             <CardContent>
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead className="text-left">{match.team1.name}</TableHead>
-                            <TableHead className="text-center">Stat</TableHead>
-                            <TableHead className="text-right">{match.team2.name}</TableHead>
+                            <TableHead className="text-right">{match.team1.name}</TableHead>
+                            <TableHead className="text-center">الإحصائية</TableHead>
+                            <TableHead className="text-left">{match.team2.name}</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        <TableRow><TableCell className="text-left">12</TableCell><TableCell className="text-center font-medium">Shots</TableCell><TableCell className="text-right">8</TableCell></TableRow>
-                        <TableRow><TableCell className="text-left">5</TableCell><TableCell className="text-center font-medium">Shots on Target</TableCell><TableCell className="text-right">3</TableCell></TableRow>
-                        <TableRow><TableCell className="text-left">58%</TableCell><TableCell className="text-center font-medium">Possession</TableCell><TableCell className="text-right">42%</TableCell></TableRow>
-                        <TableRow><TableCell className="text-left">450</TableCell><TableCell className="text-center font-medium">Passes</TableCell><TableCell className="text-right">320</TableCell></TableRow>
-                        <TableRow><TableCell className="text-left">85%</TableCell><TableCell className="text-center font-medium">Pass Accuracy</TableCell><TableCell className="text-right">78%</TableCell></TableRow>
-                        <TableRow><TableCell className="text-left">2</TableCell><TableCell className="text-center font-medium">Yellow Cards</TableCell><TableCell className="text-right">3</TableCell></TableRow>
+                        <TableRow><TableCell className="text-right">12</TableCell><TableCell className="text-center font-medium">تسديدات</TableCell><TableCell className="text-left">8</TableCell></TableRow>
+                        <TableRow><TableCell className="text-right">5</TableCell><TableCell className="text-center font-medium">تسديدات على المرمى</TableCell><TableCell className="text-left">3</TableCell></TableRow>
+                        <TableRow><TableCell className="text-right">58%</TableCell><TableCell className="text-center font-medium">استحواذ</TableCell><TableCell className="text-left">42%</TableCell></TableRow>
+                        <TableRow><TableCell className="text-right">450</TableCell><TableCell className="text-center font-medium">تمريرات</TableCell><TableCell className="text-left">320</TableCell></TableRow>
+                        <TableRow><TableCell className="text-right">85%</TableCell><TableCell className="text-center font-medium">دقة التمرير</TableCell><TableCell className="text-left">78%</TableCell></TableRow>
+                        <TableRow><TableCell className="text-right">2</TableCell><TableCell className="text-center font-medium">بطاقات صفراء</TableCell><TableCell className="text-left">3</TableCell></TableRow>
                     </TableBody>
                 </Table>
             </CardContent>
@@ -176,13 +176,13 @@ export default async function MatchDetailsPage({
         <TabsContent value="h2h">
            <Card>
             <CardHeader>
-                <CardTitle>Head-to-Head</CardTitle>
-                <CardDescription>Previous encounters between the two teams.</CardDescription>
+                <CardTitle>المواجهات المباشرة</CardTitle>
+                <CardDescription>المواجهات السابقة بين الفريقين.</CardDescription>
             </CardHeader>
             <CardContent>
                 {matches.filter(m => m.id !== match.id && ((m.team1.id === match.team1.id && m.team2.id === match.team2.id) || (m.team1.id === match.team2.id && m.team2.id === match.team1.id))).slice(0,3).map(m => (
                     <div key={m.id} className="mb-4">
-                        <p className="text-sm text-muted-foreground">{new Date(m.date).toLocaleDateString()} at {m.venue}</p>
+                        <p className="text-sm text-muted-foreground">{new Date(m.date).toLocaleDateString('ar-SA')} في {m.venue}</p>
                         <p className="font-semibold">{m.team1.name} {m.score} {m.team2.name}</p>
                         <Separator className="mt-2" />
                     </div>

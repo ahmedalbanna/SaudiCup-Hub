@@ -14,16 +14,16 @@ export default function PlayersPage() {
     <>
       <div className="flex items-center justify-between">
         <h1 className="font-headline text-lg font-semibold md:text-2xl">
-          Players
+          اللاعبون
         </h1>
         <div className="flex items-center gap-2">
-            <Input placeholder="Search players..." className="w-48"/>
+            <Input placeholder="ابحث عن لاعبين..." className="w-48"/>
           <Select defaultValue="all-teams">
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Filter by team" />
+              <SelectValue placeholder="تصفية حسب الفريق" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all-teams">All Teams</SelectItem>
+              <SelectItem value="all-teams">كل الفرق</SelectItem>
               {teams.map(team => (
                 <SelectItem key={team.id} value={team.id}>{team.name}</SelectItem>
               ))}
