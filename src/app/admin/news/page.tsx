@@ -125,6 +125,7 @@ export default function AdminNewsPage() {
                           height="64"
                           src={article.imageUrl}
                           width="64"
+                          data-ai-hint="football action"
                         />
                       </TableCell>
                       <TableCell className="font-medium">
@@ -137,7 +138,7 @@ export default function AdminNewsPage() {
                         {article.category}
                       </TableCell>
                       <TableCell className="hidden md:table-cell">
-                         {new Date(article.date).toLocaleDateString()}
+                         {new Date(article.date).toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' })}
                       </TableCell>
                       <TableCell>
                         <DropdownMenu>

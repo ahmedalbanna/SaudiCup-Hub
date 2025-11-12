@@ -1,5 +1,5 @@
 'use client';
-import { ChevronLeft, Upload } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -118,9 +118,10 @@ export default function EditArticlePage({ params }: { params: { id: string } }) 
                         height="300"
                         src={article.imageUrl}
                         width="300"
+                        data-ai-hint="football action"
                         />
                        <div className="flex items-center gap-2">
-                            <Button size="sm" variant="outline">
+                            <Button size="sm" variant="outline" className="w-full mt-2">
                                 تغيير الصورة
                             </Button>
                        </div>

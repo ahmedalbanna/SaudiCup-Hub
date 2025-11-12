@@ -108,6 +108,9 @@ export default function NewArticlePage() {
                         <Upload className="h-4 w-4 text-muted-foreground" />
                         <span className="sr-only">تحميل</span>
                       </div>
+                       <Button size="sm" variant="outline" className="w-full mt-2">
+                            تحميل صورة
+                       </Button>
                     </div>
                   </CardContent>
                 </Card>
