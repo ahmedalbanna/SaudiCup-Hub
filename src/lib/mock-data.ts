@@ -61,7 +61,7 @@ export const players: Player[] = [
 ];
 
 export const matches: Match[] = [
-  { id: 'm1', team1: teams[0], team2: teams[1], date: '2024-10-26', time: '19:00', venue: 'King Fahd Stadium', status: 'scheduled' },
+  { id: 'm1', team1: teams[0], team2: teams[1], date: '2024-10-26', time: '19:00', venue: 'King Fahd Stadium', status: 'live', score: '1 - 1' },
   { id: 'm2', team1: teams[2], team2: teams[3], date: '2024-10-26', time: '21:00', venue: 'Mrsool Park', status: 'scheduled' },
   { id: 'm3', team1: teams[4], team2: teams[5], date: '2024-10-27', time: '18:00', venue: 'King Abdullah Sports City', status: 'scheduled' },
   { id: 'm4', team1: teams[0], team2: teams[3], date: '2024-11-02', time: '20:00', venue: 'King Fahd Stadium', score: '2 - 1', status: 'finished' },

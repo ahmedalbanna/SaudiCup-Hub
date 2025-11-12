@@ -4,9 +4,9 @@ import { matches, players, teams } from '@/lib/mock-data';
 import Image from 'next/image';
 import {
   Card,
+  CardHeader,
   CardContent,
   CardDescription,
-  CardHeader,
   CardTitle,
 } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -24,6 +24,7 @@ import {
   analyzeMatch,
   type AnalyzeMatchInput,
 } from '@/ai/flows/ai-powered-match-analysis';
+import LiveCommentary from './LiveCommentary';
 
 export default async function MatchDetailsPage({
   params,
@@ -101,13 +102,17 @@ export default async function MatchDetailsPage({
           </div>
         </CardHeader>
       </Card>
-      <Tabs defaultValue="analysis">
-        <TabsList className="grid w-full grid-cols-4">
+      <Tabs defaultValue="commentary">
+        <TabsList className="grid w-full grid-cols-5">
+          <TabsTrigger value="commentary">Live Commentary</TabsTrigger>
           <TabsTrigger value="analysis">AI Analysis</TabsTrigger>
           <TabsTrigger value="lineups">Lineups</TabsTrigger>
           <TabsTrigger value="stats">Statistics</TabsTrigger>
           <TabsTrigger value="h2h">H2H</TabsTrigger>
         </TabsList>
+         <TabsContent value="commentary">
+          <LiveCommentary match={match} />
+        </TabsContent>
         <TabsContent value="analysis">
           <MatchAnalysis 
             getAnalysis={getAnalysis}
