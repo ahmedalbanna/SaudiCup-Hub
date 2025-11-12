@@ -2,6 +2,12 @@ export type Team = {
   id: string;
   name: string;
   logoUrl: string;
+  rating: number;
+  stats: {
+    att: number;
+    mid: number;
+    def: number;
+  };
 };
 
 export type PlayerStats = {
@@ -61,12 +67,12 @@ export type Stadium = {
 };
 
 export const teams: Team[] = [
-  { id: 't1', name: 'روفرز الرياض', logoUrl: 'https://picsum.photos/seed/t1_logo/100/100' },
-  { id: 't2', name: 'جيتس جدة', logoUrl: 'https://picsum.photos/seed/t2_logo/100/100' },
-  { id: 't3', name: 'ديناموز الدمام', logoUrl: 'https://picsum.photos/seed/t3_logo/100/100' },
-  { id: 't4', name: 'ملوك مكة', logoUrl: 'https://picsum.photos/seed/t4_logo/100/100' },
-  { id: 't5', name: 'خيول المدينة', logoUrl: 'https://picsum.photos/seed/t5_logo/100/100' },
-  { id: 't6', name: 'نمور الطائف', logoUrl: 'https://picsum.photos/seed/t6_logo/100/100' },
+  { id: 't1', name: 'روفرز الرياض', logoUrl: 'https://picsum.photos/seed/t1_logo/100/100', rating: 5, stats: { att: 88, mid: 85, def: 82 } },
+  { id: 't2', name: 'جيتس جدة', logoUrl: 'https://picsum.photos/seed/t2_logo/100/100', rating: 4.5, stats: { att: 84, mid: 86, def: 83 } },
+  { id: 't3', name: 'ديناموز الدمام', logoUrl: 'https://picsum.photos/seed/t3_logo/100/100', rating: 4, stats: { att: 82, mid: 81, def: 80 } },
+  { id: 't4', name: 'ملوك مكة', logoUrl: 'https://picsum.photos/seed/t4_logo/100/100', rating: 4, stats: { att: 80, mid: 82, def: 79 } },
+  { id: 't5', name: 'خيول المدينة', logoUrl: 'https://picsum.photos/seed/t5_logo/100/100', rating: 3.5, stats: { att: 78, mid: 80, def: 77 } },
+  { id: 't6', name: 'نمور الطائف', logoUrl: 'https://picsum.photos/seed/t6_logo/100/100', rating: 3, stats: { att: 75, mid: 78, def: 76 } },
 ];
 
 const saudiArabia: Nationality = { name: 'Saudi Arabia', flagUrl: 'https://picsum.photos/seed/sa_flag/40/30' };
