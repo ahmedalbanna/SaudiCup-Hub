@@ -1,0 +1,147 @@
+'use client';
+import { ChevronLeft, Upload } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import Link from "next/link";
+
+export default function NewArticlePage() {
+    return (
+        <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
+            <div className="flex items-center gap-4">
+              <Button variant="outline" size="icon" className="h-7 w-7" asChild>
+                <Link href="/admin/news">
+                  <ChevronLeft className="h-4 w-4" />
+                  <span className="sr-only">العودة</span>
+                </Link>
+              </Button>
+              <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
+                مقال إخباري جديد
+              </h1>
+              <Badge variant="outline" className="ml-auto sm:ml-0">
+                مسودة
+              </Badge>
+              <div className="hidden items-center gap-2 md:ml-auto md:flex">
+                <Button variant="outline" size="sm">
+                  تجاهل
+                </Button>
+                <Button size="sm">حفظ المقال</Button>
+              </div>
+            </div>
+            <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
+              <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>تفاصيل المقال</CardTitle>
+                    <CardDescription>
+                      املأ التفاصيل الرئيسية لمقالك الإخباري.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-6">
+                      <div className="grid gap-3">
+                        <Label htmlFor="title">العنوان</Label>
+                        <Input
+                          id="title"
+                          type="text"
+                          className="w-full"
+                          defaultValue="روفرز الرياض يحقق فوزًا دراماتيكيًا في اللحظات الأخيرة"
+                        />
+                      </div>
+                       <div className="grid gap-3">
+                        <Label htmlFor="excerpt">مقتطف</Label>
+                        <Textarea
+                          id="excerpt"
+                          defaultValue="هدف مذهل في الدقيقة 93 منح روفرز الرياض فوزًا حاسمًا على منافسهم، محافظًا على آمالهم في البطولة."
+                          className="min-h-24"
+                        />
+                      </div>
+                      <div className="grid gap-3">
+                        <Label htmlFor="content">المحتوى</Label>
+                        <Textarea
+                          id="content"
+                          defaultValue="في مباراة مثيرة حبست الأنفاس، تمكن فريق روفرز الرياض من تحقيق فوز ثمين على غريمه التقليدي بهدف في الدقيقة الثالثة من الوقت بدل الضائع..."
+                          className="min-h-48"
+                        />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>حالة المقال</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-6">
+                      <div className="grid gap-3">
+                        <Label htmlFor="status">الحالة</Label>
+                        <Select>
+                          <SelectTrigger id="status" aria-label="اختر الحالة">
+                            <SelectValue placeholder="اختر الحالة" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="draft">مسودة</SelectItem>
+                            <SelectItem value="published">منشور</SelectItem>
+                            <SelectItem value="archived">مؤرشف</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card className="overflow-hidden">
+                  <CardHeader>
+                    <CardTitle>صورة المقال</CardTitle>
+                    <CardDescription>
+                      أضف صورة رئيسية لمقالك الإخباري.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-2">
+                       <div className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
+                        <Upload className="h-4 w-4 text-muted-foreground" />
+                        <span className="sr-only">تحميل</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>الفئة</CardTitle>
+                  </CardHeader>
+                   <CardContent>
+                    <div className="grid gap-6">
+                      <div className="grid gap-3">
+                        <Label htmlFor="category">الفئة</Label>
+                        <Select>
+                          <SelectTrigger id="category" aria-label="اختر الفئة">
+                            <SelectValue placeholder="اختر الفئة" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="match-report">تقرير المباراة</SelectItem>
+                            <SelectItem value="transfers">الانتقالات</SelectItem>
+                            <SelectItem value="features">مقالات خاصة</SelectItem>
+                            <SelectItem value="awards">الجوائز</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+            <div className="flex items-center justify-center gap-2 md:hidden">
+              <Button variant="outline" size="sm">
+                تجاهل
+              </Button>
+              <Button size="sm">حفظ المقال</Button>
+            </div>
+          </div>
+    )
+}
