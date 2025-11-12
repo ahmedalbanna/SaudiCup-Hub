@@ -9,7 +9,6 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Loader2, PlayCircle, Square } from 'lucide-react';
-import { generateCommentary } from '@/ai/flows/live-commentary-flow';
 import type { Match } from '@/lib/mock-data';
 
 type CommentaryItem = {
@@ -17,25 +16,42 @@ type CommentaryItem = {
   comment: string;
 };
 
+const mockCommentaries = [
+  "A great pass from the midfield finds the striker in a dangerous position!",
+  "The defender makes a crucial tackle to stop the attack.",
+  "What a save by the goalkeeper! That was a certain goal.",
+  "The crowd is on their feet as the home team pushes forward.",
+  "Corner kick for the visiting team. Can they make it count?",
+  "The shot from distance goes just wide of the post.",
+  "A yellow card is shown for a late challenge in the midfield.",
+  "Incredible piece of skill from the winger to beat his man.",
+  "The teams are locked in a tactical battle, neither giving an inch.",
+  "A long ball over the top, but the goalkeeper is quick to come out and claim it."
+];
+
+
 export default function LiveCommentary({ match }: { match: Match }) {
   const [commentary, setCommentary] = useState<CommentaryItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const commentIndexRef = useRef(0);
 
   const fetchCommentary = async () => {
     setIsLoading(true);
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 500));
     try {
-      const prompt = `Generate a single exciting commentary update for the match between ${match.team1.name} and ${match.team2.name}. The current score is ${match.score}. We are in the middle of the match.`;
-      const result = await generateCommentary(prompt);
+      const comment = mockCommentaries[commentIndexRef.current % mockCommentaries.length];
+      commentIndexRef.current += 1;
+
       const newComment: CommentaryItem = {
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-        comment: result.commentary,
+        comment: comment,
       };
       setCommentary((prev) => [newComment, ...prev]);
     } catch (error) {
       console.error('Failed to generate commentary:', error);
-      // Optional: show an error to the user
     } finally {
       setIsLoading(false);
     }
@@ -44,7 +60,7 @@ export default function LiveCommentary({ match }: { match: Match }) {
   const startStreaming = () => {
     setIsStreaming(true);
     fetchCommentary(); // Fetch immediately
-    intervalRef.current = setInterval(fetchCommentary, 25000); // Fetch every 25 seconds
+    intervalRef.current = setInterval(fetchCommentary, 10000); // Fetch every 10 seconds
   };
 
   const stopStreaming = () => {
@@ -72,7 +88,7 @@ export default function LiveCommentary({ match }: { match: Match }) {
             <div>
                 <CardTitle>Live Commentary</CardTitle>
                 <CardDescription>
-                AI-powered play-by-play updates for the match.
+                Play-by-play updates for the match.
                 </CardDescription>
             </div>
             <div>
