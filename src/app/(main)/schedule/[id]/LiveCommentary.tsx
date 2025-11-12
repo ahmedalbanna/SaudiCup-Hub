@@ -44,7 +44,7 @@ export default function LiveCommentary({ match }: { match: Match }) {
   const startStreaming = () => {
     setIsStreaming(true);
     fetchCommentary(); // Fetch immediately
-    intervalRef.current = setInterval(fetchCommentary, 10000); // Fetch every 10 seconds
+    intervalRef.current = setInterval(fetchCommentary, 25000); // Fetch every 25 seconds
   };
 
   const stopStreaming = () => {
