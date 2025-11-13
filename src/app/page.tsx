@@ -85,7 +85,7 @@ export default function Home() {
               مجد الكأس
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-slate-200">
-              عش الشغف والدراما والإثارة في البطولة الكروية الأولى.
+              عش الشغف والدراما والإثارة في بطولة كأس السعودية.
             </p>
             <Button asChild size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90">
               <Link href="/schedule">

@@ -61,7 +61,7 @@ export default function MainLayout({
             <Link href="/dashboard" className="flex items-center gap-2">
               <Logo className="h-8 w-8" />
               <div className="text-right">
-                <p className="font-bold text-foreground">روفرز الرياض</p>
+                <p className="font-bold text-foreground">كأس السعودية</p>
                 <p className="text-xs text-muted-foreground">تأسست 2024</p>
               </div>
             </Link>
