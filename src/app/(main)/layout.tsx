@@ -14,6 +14,7 @@ import {
   Landmark,
   GalleryHorizontal,
   LayoutDashboard,
+  ShieldCheck,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -53,7 +54,7 @@ export default function MainLayout({
       disableTransitionOnChange
     >
       <div className="flex min-h-screen w-full flex-col bg-background text-foreground">
-        <header className="sticky top-0 z-50 flex h-16 items-center justify-between gap-4 border-b border-border bg-background/80 px-4 backdrop-blur-sm md:px-6">
+        <header className="sticky top-0 z-50 flex h-16 items-center justify-between gap-4 border-b border-border bg-background/95 px-4 backdrop-blur-sm md:px-6">
           <div className="flex items-center gap-4">
             <Link href="/dashboard" className="flex items-center gap-2">
               <Logo className="h-8 w-8" />
@@ -134,6 +135,12 @@ export default function MainLayout({
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>الملف الشخصي</DropdownMenuItem>
                 <DropdownMenuItem>الإعدادات</DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/admin">
+                    <ShieldCheck className="ml-2 h-4 w-4" />
+                    <span>لوحة التحكم</span>
+                  </Link>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link href="/">تسجيل الخروج</Link>
@@ -153,7 +160,7 @@ export default function MainLayout({
           }}
         >
           <div className="relative z-10">{children}</div>
-          <div className="absolute inset-0 bg-background/70 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
         </main>
 
         <BottomNav />
