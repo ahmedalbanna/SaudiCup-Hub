@@ -1,3 +1,4 @@
+
 import { MatchCard } from '@/components/cards/MatchCard';
 import { matches, teams } from '@/lib/mock-data';
 import {
@@ -9,36 +10,53 @@ import {
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Calendar } from 'lucide-react';
+import { Calendar, Search } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 
 export default function SchedulePage() {
   return (
     <>
-      <div className="flex items-center justify-between">
-        <h1 className="font-headline text-lg font-semibold md:text-2xl">
+      <div className="mb-6">
+        <h1 className="font-headline text-2xl font-bold text-white md:text-3xl">
           جدول المباريات
         </h1>
-        <div className="flex items-center gap-2">
-          <Select defaultValue="all">
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="تصفية حسب الفريق" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">كل الفرق</SelectItem>
-              {teams.map((team) => (
-                <SelectItem key={team.id} value={team.id}>
-                  {team.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Button variant="outline" asChild>
-            <Link href="/schedule/calendar">
-                <Calendar className="ml-2 h-4 w-4" /> عرض التقويم
-            </Link>
-          </Button>
-        </div>
+        <p className="mt-1 text-gray-400">
+          تصفح جميع المباريات القادمة والسابقة في البطولة.
+        </p>
       </div>
+      
+      <Card className="mb-6 bg-gray-800/50 border-gray-700/50">
+        <CardContent className="p-4">
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="relative flex-grow">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Input placeholder="ابحث عن فريق أو ملعب..." className="w-full pl-10 bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500" />
+            </div>
+            <div className="flex gap-4">
+              <Select defaultValue="all">
+                <SelectTrigger className="w-full md:w-[180px] bg-gray-900/50 border-gray-700 text-white">
+                  <SelectValue placeholder="تصفية حسب الفريق" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">كل الفرق</SelectItem>
+                  {teams.map((team) => (
+                    <SelectItem key={team.id} value={team.id}>
+                      {team.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Button variant="outline" asChild className="border-gray-700 text-gray-300 hover:bg-gray-700 hover:text-white">
+                <Link href="/schedule/calendar">
+                    <Calendar className="ml-2 h-4 w-4" /> عرض التقويم
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {matches.map((match) => (
           <MatchCard key={match.id} match={match} />

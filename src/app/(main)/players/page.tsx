@@ -8,29 +8,59 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
+import { Card, CardContent } from '@/components/ui/card';
+import { Search } from 'lucide-react';
 
 export default function PlayersPage() {
+  const positions = [...new Set(players.map(p => p.position))];
+
   return (
     <>
-      <div className="flex items-center justify-between">
-        <h1 className="font-headline text-lg font-semibold md:text-2xl">
+      <div className="mb-6">
+        <h1 className="font-headline text-2xl font-bold text-white md:text-3xl">
           اللاعبون
         </h1>
-        <div className="flex items-center gap-2">
-            <Input placeholder="ابحث عن لاعبين..." className="w-48"/>
-          <Select defaultValue="all-teams">
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="تصفية حسب الفريق" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all-teams">كل الفرق</SelectItem>
-              {teams.map(team => (
-                <SelectItem key={team.id} value={team.id}>{team.name}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+        <p className="mt-1 text-gray-400">
+          استكشف ملفات تعريف اللاعبين وإحصائياتهم.
+        </p>
       </div>
+
+      <Card className="mb-6 bg-gray-800/50 border-gray-700/50">
+        <CardContent className="p-4">
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="relative flex-grow">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Input placeholder="ابحث عن لاعب..." className="w-full pl-10 bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500" />
+            </div>
+            <div className="flex gap-4">
+               <Select defaultValue="all-teams">
+                <SelectTrigger className="w-full md:w-[180px] bg-gray-900/50 border-gray-700 text-white">
+                  <SelectValue placeholder="تصفية حسب الفريق" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all-teams">كل الفرق</SelectItem>
+                  {teams.map(team => (
+                    <SelectItem key={team.id} value={team.id}>{team.name}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Select defaultValue="all-positions">
+                <SelectTrigger className="w-full md:w-[180px] bg-gray-900/50 border-gray-700 text-white">
+                  <SelectValue placeholder="تصفية حسب المركز" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all-positions">كل المراكز</SelectItem>
+                  {positions.map(position => (
+                    <SelectItem key={position} value={position}>{position}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {players.map((player) => {
           const team = teams.find((t) => t.id === player.teamId);
