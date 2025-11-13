@@ -10,12 +10,29 @@ import {
 import { Button } from '@/components/ui/button';
 import { Loader2, PlayCircle, Square, Mic } from 'lucide-react';
 import type { Match } from '@/lib/mock-data';
-import { generateCommentary } from '@/ai/flows/live-commentary-flow';
 
 type CommentaryItem = {
   timestamp: string;
   comment: string;
 };
+
+const mockCommentaryPool: string[] = [
+    'انطلاقة سريعة من الفريق المضيف، وضغط مبكر على دفاعات الخصم.',
+    'تسديدة قوية من خارج منطقة الجزاء، لكنها تعلو العارضة بقليل!',
+    'هجمة مرتدة خطيرة للفريق الضيف، والدفاع يتدخل في اللحظة الأخيرة.',
+    'خطأ في منتصف الملعب، الحكم يكتفي بالتحذير الشفهي.',
+    'تمريرات قصيرة ومتقنة من لاعبي الوسط، في محاولة لفتح ثغرة في الدفاع.',
+    'ركنية للفريق المضيف... رأسية خطيرة تمر بجوار القائم!',
+    'يا لها من فرصة ضائعة! المهاجم وجهاً لوجه مع الحارس لكنه يسدد الكرة خارج المرمى.',
+    'جوووووول! هدف رائع بعد جملة تكتيكية مميزة. أصحاب الأرض يتقدمون!',
+    'الفريق الضيف يحاول العودة في المباراة، ويزيد من ضغطه الهجومي.',
+    'تصدي خرافي من الحارس! ينقذ فريقه من هدف محقق.',
+    'بطاقة صفراء مستحقة بعد تدخل عنيف.',
+    'تغيير في صفوف الفريق الضيف، هل سيغير من مجرى المباراة؟',
+    'الهدوء يسيطر على الدقائق الأخيرة، ويبدو أن الفريق المضيف في طريقه للفوز.',
+    'الحكم يطلق صافرة النهاية! فوز مستحق لأصحاب الأرض بنتيجة 1-0.'
+];
+
 
 export default function LiveCommentary({ match }: { match: Match }) {
   const [commentary, setCommentary] = useState<CommentaryItem[]>([]);
@@ -23,36 +40,33 @@ export default function LiveCommentary({ match }: { match: Match }) {
   const [isStreaming, setIsStreaming] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const commentIndexRef = useRef(0);
 
-  const fetchCommentary = async () => {
+  const fetchCommentary = () => {
     setIsLoading(true);
-    try {
-      // Create a more dynamic prompt based on the match state
-      const prompt = `المباراة بين ${match.team1.name} و ${match.team2.name}. النتيجة الحالية هي ${match.score || '0-0'}. ${match.status === 'live' ? 'المباراة جارية.' : 'المباراة على وشك البدء.'} صف حدثًا مثيرًا.`;
-      const result = await generateCommentary(prompt);
-      
-      if (result.commentary) {
-          const newComment: CommentaryItem = {
+    // Simulate network delay
+    setTimeout(() => {
+        if (commentIndexRef.current >= mockCommentaryPool.length) {
+            // Optional: stop streaming if we run out of comments
+            stopStreaming();
+            return;
+        }
+
+        const newComment: CommentaryItem = {
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-            comment: result.commentary,
-          };
-          setCommentary((prev) => [newComment, ...prev]);
-      }
-    } catch (error) {
-      console.error('Failed to generate commentary:', error);
-      // Optionally add a mock comment on error to keep the stream going
-      const errorComment: CommentaryItem = {
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-        comment: 'حدث خطأ أثناء إنشاء التعليق. سنحاول مرة أخرى.',
-      };
-      setCommentary((prev) => [errorComment, ...prev]);
-    } finally {
-      setIsLoading(false);
-    }
+            comment: mockCommentaryPool[commentIndexRef.current],
+        };
+
+        setCommentary((prev) => [newComment, ...prev]);
+        commentIndexRef.current += 1;
+        setIsLoading(false);
+    }, 1000);
   };
 
   const startStreaming = () => {
     setIsStreaming(true);
+    commentIndexRef.current = 0; // Reset index
+    setCommentary([]); // Clear previous comments
     fetchCommentary(); // Fetch immediately
     intervalRef.current = setInterval(fetchCommentary, 10000); // Fetch every 10 seconds
   };
