@@ -32,12 +32,19 @@ import { BottomNav } from '@/app/components/BottomNav';
 import { MainNav } from '../components/MainNav';
 import { ThemeProvider } from '@/app/components/ThemeProvider';
 import { ThemeToggle } from '@/app/components/ThemeToggle';
+import { Badge } from '@/components/ui/badge';
 
 export default function MainLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const notifications = [
+    { title: 'نتيجة المباراة', description: 'روفرز الرياض 2 - 1 جيتس جدة', time: 'منذ 5 دقائق' },
+    { title: 'خبر جديد', description: 'تم الإعلان عن جدول المباريات الجديد.', time: 'منذ 1 ساعة' },
+    { title: 'تذكير بالمباراة', description: 'ديناموز الدمام ضد ملوك مكة ستبدأ قريبًا.', time: 'منذ 3 ساعات' },
+  ];
+
   return (
     <ThemeProvider
       attribute="class"
@@ -73,18 +80,30 @@ export default function MainLayout({
 
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            <div className="hidden items-center gap-3 md:flex">
-              <div className="flex-1">
-                <p className="text-xs text-muted-foreground text-left">الموسم 1</p>
-                <Progress value={33} className="h-2 w-32" />
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-lg">1</span>
-                <span className="text-xs bg-accent text-accent-foreground px-1.5 py-0.5 rounded-sm font-bold">
-                  XP
-                </span>
-              </div>
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="relative">
+                  <Bell className="h-5 w-5" />
+                  <Badge className="absolute -top-1 -right-1 h-4 w-4 justify-center p-0 text-xs">{notifications.length}</Badge>
+                  <span className="sr-only">فتح الإشعارات</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-80" align="end">
+                <DropdownMenuLabel>الإشعارات</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                {notifications.map((notification, index) => (
+                  <DropdownMenuItem key={index} className="flex flex-col items-start gap-1">
+                    <p className="font-semibold">{notification.title}</p>
+                    <p className="text-xs text-muted-foreground">{notification.description}</p>
+                    <p className="text-xs text-muted-foreground/80">{notification.time}</p>
+                  </DropdownMenuItem>
+                ))}
+                <DropdownMenuSeparator />
+                 <DropdownMenuItem className="justify-center">
+                    <Link href="#">عرض كل الإشعارات</Link>
+                 </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
