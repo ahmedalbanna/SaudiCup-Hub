@@ -23,7 +23,7 @@ export function MainNav() {
           key={item.href}
           variant="ghost"
           asChild
-          className="px-4 py-1 h-auto text-sm data-[active=true]:bg-background data-[active=true]:text-foreground hover:bg-background/50"
+          className="px-4 py-1 h-auto text-sm text-muted-foreground hover:bg-background/50 hover:text-foreground data-[active=true]:bg-background data-[active=true]:text-foreground"
           data-active={pathname.startsWith(item.href)}
         >
           <Link href={item.href}>{item.label}</Link>
