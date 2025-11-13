@@ -29,6 +29,7 @@ import { Progress } from '@/components/ui/progress';
 import { Logo } from '@/components/Logo';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { BottomNav } from '@/app/components/BottomNav';
+import { MainNav } from '../components/MainNav';
 
 export default function MainLayout({
   children,
@@ -58,17 +59,7 @@ export default function MainLayout({
           </div>
         </div>
 
-        <nav className="hidden absolute left-1/2 -translate-x-1/2 items-center gap-2 rounded-md bg-gray-700 p-1 md:flex">
-          <Button variant="ghost" className="px-4 py-1 h-auto text-sm data-[active=true]:bg-gray-600">
-            الرئيسية
-          </Button>
-          <Button variant="ghost" className="px-4 py-1 h-auto text-sm data-[active=true]:bg-gray-600">
-            لعب
-          </Button>
-          <Button variant="ghost" className="px-4 py-1 h-auto text-sm data-[active=true]:bg-gray-600" data-active="true">
-            المباريات
-          </Button>
-        </nav>
+        <MainNav />
 
         <div className="flex items-center gap-4">
           <div className="hidden items-center gap-3 md:flex">
