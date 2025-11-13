@@ -8,6 +8,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { Calendar } from 'lucide-react';
 
 export default function SchedulePage() {
   return (
@@ -30,7 +32,11 @@ export default function SchedulePage() {
               ))}
             </SelectContent>
           </Select>
-          <Button variant="outline">فرز حسب التاريخ</Button>
+          <Button variant="outline" asChild>
+            <Link href="/schedule/calendar">
+                <Calendar className="ml-2 h-4 w-4" /> عرض التقويم
+            </Link>
+          </Button>
         </div>
       </div>
       <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
