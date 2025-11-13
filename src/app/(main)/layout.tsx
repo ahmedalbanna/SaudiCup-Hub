@@ -47,6 +47,7 @@ export default function MainLayout({
     { title: 'خبر جديد', description: 'تم الإعلان عن جدول المباريات الجديد.', time: 'منذ 1 ساعة' },
     { title: 'تذكير بالمباراة', description: 'ديناموز الدمام ضد ملوك مكة ستبدأ قريبًا.', time: 'منذ 3 ساعات' },
   ];
+  const isLoggedIn = true;
 
   return (
       <div className="flex min-h-screen w-full flex-col bg-background text-foreground">
@@ -67,78 +68,91 @@ export default function MainLayout({
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="/favorites">
-                <Heart className="h-5 w-5" />
-                <span className="sr-only">المفضلة</span>
-              </Link>
-            </Button>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="relative">
-                  <Bell className="h-5 w-5" />
-                  <Badge className="absolute -top-1 -right-1 h-4 w-4 justify-center p-0 text-xs">{notifications.length}</Badge>
-                  <span className="sr-only">فتح الإشعارات</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-80" align="end">
-                <DropdownMenuLabel>الإشعارات</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                {notifications.map((notification, index) => (
-                  <DropdownMenuItem key={index} className="flex flex-col items-start gap-1">
-                    <p className="font-semibold">{notification.title}</p>
-                    <p className="text-xs text-muted-foreground">{notification.description}</p>
-                    <p className="text-xs text-muted-foreground/80">{notification.time}</p>
-                  </DropdownMenuItem>
-                ))}
-                <DropdownMenuSeparator />
-                 <DropdownMenuItem className="justify-center">
-                    <Link href="#">عرض كل الإشعارات</Link>
-                 </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className="relative h-10 w-10 rounded-full"
-                >
-                  <Avatar className="h-10 w-10">
-                    <AvatarImage
-                      src="https://picsum.photos/seed/user1/100/100"
-                      alt="صورة المستخدم"
-                      data-ai-hint="female portrait"
-                    />
-                    <AvatarFallback>س أ</AvatarFallback>
-                  </Avatar>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
-                <DropdownMenuLabel className="font-normal">
-                  <div className="flex flex-col space-y-1 text-right">
-                    <p className="text-sm font-medium leading-none">
-                      سارة الأحمد
-                    </p>
-                    <p className="text-xs leading-none text-muted-foreground">
-                      sara@example.com
-                    </p>
-                  </div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>الملف الشخصي</DropdownMenuItem>
-                <DropdownMenuItem>الإعدادات</DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/admin">
-                    <ShieldCheck className="ml-2 h-4 w-4" />
-                    <span>لوحة التحكم</span>
+            {isLoggedIn ? (
+              <>
+                <Button variant="ghost" size="icon" asChild>
+                  <Link href="/favorites">
+                    <Heart className="h-5 w-5" />
+                    <span className="sr-only">المفضلة</span>
                   </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/">تسجيل الخروج</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="relative">
+                      <Bell className="h-5 w-5" />
+                      <Badge className="absolute -top-1 -right-1 h-4 w-4 justify-center p-0 text-xs">{notifications.length}</Badge>
+                      <span className="sr-only">فتح الإشعارات</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-80" align="end">
+                    <DropdownMenuLabel>الإشعارات</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {notifications.map((notification, index) => (
+                      <DropdownMenuItem key={index} className="flex flex-col items-start gap-1">
+                        <p className="font-semibold">{notification.title}</p>
+                        <p className="text-xs text-muted-foreground">{notification.description}</p>
+                        <p className="text-xs text-muted-foreground/80">{notification.time}</p>
+                      </DropdownMenuItem>
+                    ))}
+                    <DropdownMenuSeparator />
+                     <DropdownMenuItem className="justify-center">
+                        <Link href="#">عرض كل الإشعارات</Link>
+                     </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="relative h-10 w-10 rounded-full"
+                    >
+                      <Avatar className="h-10 w-10">
+                        <AvatarImage
+                          src="https://picsum.photos/seed/user1/100/100"
+                          alt="صورة المستخدم"
+                          data-ai-hint="female portrait"
+                        />
+                        <AvatarFallback>س أ</AvatarFallback>
+                      </Avatar>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56" align="end" forceMount>
+                    <DropdownMenuLabel className="font-normal">
+                      <div className="flex flex-col space-y-1 text-right">
+                        <p className="text-sm font-medium leading-none">
+                          سارة الأحمد
+                        </p>
+                        <p className="text-xs leading-none text-muted-foreground">
+                          sara@example.com
+                        </p>
+                      </div>
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>الملف الشخصي</DropdownMenuItem>
+                    <DropdownMenuItem>الإعدادات</DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/admin">
+                        <ShieldCheck className="ml-2 h-4 w-4" />
+                        <span>لوحة التحكم</span>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <Link href="/">تسجيل الخروج</Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </>
+            ) : (
+               <nav className="flex items-center space-x-2">
+                <Button asChild variant="ghost" size="sm">
+                  <Link href="/login">تسجيل الدخول</Link>
+                </Button>
+                <Button asChild size="sm">
+                  <Link href="/register">التسجيل</Link>
+                </Button>
+              </nav>
+            )}
           </div>
         </header>
 

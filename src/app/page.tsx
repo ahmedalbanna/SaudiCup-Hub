@@ -33,9 +33,9 @@ import { NewsCard } from '@/components/cards/NewsCard';
 import { matches, news } from '@/lib/mock-data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Logo } from '@/components/Logo';
-import { MainNav } from './components/MainNav';
-import { LiveClock } from './components/LiveClock';
-import { ThemeToggle } from './components/ThemeToggle';
+import { MainNav } from '@/app/components/MainNav';
+import { LiveClock } from '@/app/components/LiveClock';
+import { ThemeToggle } from '@/app/components/ThemeToggle';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero');
