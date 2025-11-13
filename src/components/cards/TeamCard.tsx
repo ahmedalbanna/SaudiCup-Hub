@@ -30,16 +30,16 @@ const StarRating = ({ rating }: { rating: number }) => {
 export function TeamCard({ team }: TeamCardProps) {
   return (
     <Link href={`/teams/${team.id}`} className="block group">
-       <Card className="bg-gradient-to-b from-primary/80 to-primary/90 border-2 border-transparent w-full aspect-[3/4] text-primary-foreground font-headline transition-transform duration-300 group-hover:scale-105 group-hover:border-primary">
+       <Card className="bg-gradient-to-b from-card to-muted/50 border-border w-full aspect-[3/4] text-foreground font-headline transition-all duration-300 group-hover:scale-105 group-hover:border-primary">
         <CardContent className="relative p-4 h-full flex flex-col justify-between items-center text-center">
-            <h3 className="font-bold text-xl uppercase tracking-wider">{team.name}</h3>
+            <h3 className="font-bold text-xl uppercase tracking-wider text-primary">{team.name}</h3>
 
             <Image
                 src={team.logoUrl}
                 alt={`${team.name} logo`}
                 width={120}
                 height={120}
-                className="my-4"
+                className="my-4 group-hover:scale-110 transition-transform duration-300"
                 data-ai-hint="team logo"
             />
 
@@ -47,15 +47,15 @@ export function TeamCard({ team }: TeamCardProps) {
                 <StarRating rating={team.rating} />
                  <div className="grid grid-cols-3 gap-4 mt-4 text-center">
                     <div>
-                        <p className="text-sm font-semibold opacity-80">ATT</p>
+                        <p className="text-sm font-semibold text-muted-foreground">ATT</p>
                         <p className="text-2xl font-bold">{team.stats.att}</p>
                     </div>
                      <div>
-                        <p className="text-sm font-semibold opacity-80">MID</p>
+                        <p className="text-sm font-semibold text-muted-foreground">MID</p>
                         <p className="text-2xl font-bold">{team.stats.mid}</p>
                     </div>
                      <div>
-                        <p className="text-sm font-semibold opacity-80">DEF</p>
+                        <p className="text-sm font-semibold text-muted-foreground">DEF</p>
                         <p className="text-2xl font-bold">{team.stats.def}</p>
                     </div>
                 </div>
