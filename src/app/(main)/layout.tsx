@@ -66,7 +66,7 @@ export default function MainLayout({
             لعب
           </Button>
           <Button variant="ghost" className="px-4 py-1 h-auto text-sm data-[active=true]:bg-gray-600" data-active="true">
-            النادي
+            المباريات
           </Button>
         </nav>
 
