@@ -8,6 +8,7 @@ import {
   PanelLeft,
   CalendarDays,
   Landmark,
+  LayoutDashboard,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -49,7 +50,7 @@ export default function AdminLayout({
       <div className="hidden border-l md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-            <Link href="/" className="flex items-center gap-2 font-semibold">
+            <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
               <Logo className="h-6 w-6" />
               <span className="">لوحة تحكم المسؤول</span>
             </Link>
@@ -66,6 +67,10 @@ export default function AdminLayout({
                     {item.label}
                  </NavLink>
               ))}
+               <NavLink href="/dashboard">
+                  <LayoutDashboard className="h-4 w-4" />
+                  عرض التطبيق
+               </NavLink>
             </nav>
           </div>
           <div className="mt-auto p-4">
@@ -101,7 +106,7 @@ export default function AdminLayout({
             <SheetContent side="right" className="flex flex-col">
               <nav className="grid gap-2 text-lg font-medium">
                 <Link
-                  href="#"
+                  href="/dashboard"
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
                   <Logo className="h-6 w-6" />
@@ -113,6 +118,10 @@ export default function AdminLayout({
                     {item.label}
                  </NavLink>
               ))}
+               <NavLink href="/dashboard" className="text-muted-foreground hover:text-foreground">
+                  <LayoutDashboard className="h-5 w-5" />
+                  عرض التطبيق
+               </NavLink>
               </nav>
               <div className="mt-auto">
                 <Card>
