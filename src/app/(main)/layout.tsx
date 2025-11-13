@@ -35,6 +35,7 @@ import { MainNav } from '../components/MainNav';
 import { ThemeProvider } from '@/app/components/ThemeProvider';
 import { ThemeToggle } from '@/app/components/ThemeToggle';
 import { Badge } from '@/components/ui/badge';
+import { LiveClock } from '../components/LiveClock';
 
 export default function MainLayout({
   children,
@@ -64,19 +65,9 @@ export default function MainLayout({
                 <p className="text-xs text-muted-foreground">تأسست 2024</p>
               </div>
             </Link>
-            <div className="hidden items-center gap-4 md:flex">
-              <div className="flex items-center gap-2 text-accent">
-                <span className="font-bold">60,641</span>
-                <div className="h-5 w-5 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-xs font-bold">
-                  F
-                </div>
-              </div>
-              <div className="flex items-center gap-2 text-primary">
-                <span className="font-bold">0</span>
-                <div className="h-5 w-5 rounded-full bg-primary"></div>
-              </div>
-            </div>
           </div>
+
+          <LiveClock />
 
           <MainNav />
 

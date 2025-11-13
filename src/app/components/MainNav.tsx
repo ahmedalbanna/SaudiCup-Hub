@@ -17,7 +17,7 @@ export function MainNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="hidden absolute left-1/2 -translate-x-1/2 items-center gap-2 rounded-md bg-muted p-1 md:flex">
+    <nav className="hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-md bg-muted p-1 md:flex">
       {navItems.map((item) => (
         <Button
           key={item.href}
