@@ -130,7 +130,7 @@ export default function CalendarClient({
                       {format(day, 'd')}
                     </span>
                     {match && isCurrentMonth && (
-                      <Link href={`/schedule/${match.id}`} className="flex-grow flex flex-col items-center justify-center text-center gap-1.5 p-1 -mx-2 -mb-2">
+                      <Link href={`/schedule/${match.id}`} className="flex-grow flex flex-col items-center justify-center text-center gap-1.5 p-1 -mx-2 -mb-2 rounded-b-md transition-colors hover:bg-gray-700/50">
                           <div className='flex items-center justify-center gap-2'>
                             <Image
                                 src={match.team1.logoUrl}
@@ -167,9 +167,9 @@ export default function CalendarClient({
         </CardContent>
       </Card>
       
-      <div>
+      <div className="pt-6">
         <h3 className="font-headline text-2xl text-white mb-4">
-          مباريات يوم {format(selectedDate, 'd MMMM', { locale: arSA })}
+          مباريات يوم {format(selectedDate, 'd MMMM yyyy', { locale: arSA })}
         </h3>
         {matchesOnSelectedDate.length > 0 ? (
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -182,7 +182,7 @@ export default function CalendarClient({
             <CardContent className="flex flex-col items-center justify-center p-12 text-center text-gray-400">
               <CalendarIcon className="h-12 w-12 mb-4"/>
               <p className="font-bold text-lg">لا توجد مباريات مجدولة</p>
-              <p>لا توجد مباريات مجدولة في هذا اليوم.</p>
+              <p>لم يتم العثور على مباريات مجدولة لهذا اليوم.</p>
             </CardContent>
           </Card>
         )}
