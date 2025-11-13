@@ -34,6 +34,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { MatchCard } from '@/components/cards/MatchCard';
+import { Badge } from '@/components/ui/badge';
 
 type CalendarProps = {
   matches: Match[];
@@ -48,8 +49,6 @@ export default function CalendarClient({
 }: CalendarProps) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
-
-  const mainTeam = teams.find((t) => t.id === mainTeamId);
 
   const start = startOfMonth(currentDate);
   const end = endOfMonth(currentDate);
@@ -66,12 +65,13 @@ export default function CalendarClient({
     return matches.find((match) => isSameDay(new Date(match.date), day));
   };
 
-  const getOpponent = (match: Match) => {
-    if (!mainTeam) return match.team1;
-    return match.team1.id === mainTeam.id ? match.team2 : match.team1;
-  };
-
   const dayNames = ['سبت', 'أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة'];
+  
+  const statusMap: {[key in Match['status']]: {text: string, className: string}} = {
+    scheduled: { text: 'مجدولة', className: 'bg-blue-500 text-white' },
+    live: { text: 'مباشر', className: 'bg-red-500 text-white animate-pulse' },
+    finished: { text: 'انتهت', className: 'bg-gray-500 text-white' }
+  }
 
 
   return (
@@ -106,7 +106,6 @@ export default function CalendarClient({
               });
               return daysInWeek.map((day, dayIndex) => {
                 const match = getMatchForDay(day);
-                const opponent = match ? getOpponent(match) : null;
                 const isCurrentMonth = day.getMonth() === currentDate.getMonth();
 
                 return (
@@ -114,7 +113,7 @@ export default function CalendarClient({
                     key={day.toString()}
                     onClick={() => setSelectedDate(day)}
                     className={cn(
-                      'relative h-32 border-b border-l border-gray-700 p-2 text-right cursor-pointer transition-colors',
+                      'relative h-40 border-b border-l border-gray-700 p-2 text-right cursor-pointer transition-colors flex flex-col',
                       dayIndex === 6 && 'border-l-0', // last item in row
                       !isCurrentMonth && 'text-gray-600 bg-gray-900/50',
                       isToday(day) && 'bg-lime-400/10',
@@ -130,19 +129,34 @@ export default function CalendarClient({
                     >
                       {format(day, 'd')}
                     </span>
-                    {match && opponent && isCurrentMonth && (
-                      <Link href={`/schedule/${match.id}`} className="absolute inset-0 flex flex-col items-center justify-center text-center gap-2 p-1">
-                          <Image
-                            src={opponent.logoUrl}
-                            alt={opponent.name}
-                            width={40}
-                            height={40}
-                            className="rounded-full bg-gray-800 p-1"
-                            data-ai-hint="team logo"
-                          />
-                           <p className="text-xs font-semibold uppercase tracking-wider text-gray-300">
-                             {match.status === 'finished' ? `ضد ${opponent.name}` : 'ودية'}
-                           </p>
+                    {match && isCurrentMonth && (
+                      <Link href={`/schedule/${match.id}`} className="flex-grow flex flex-col items-center justify-center text-center gap-1.5 p-1 -mx-2 -mb-2">
+                          <div className='flex items-center justify-center gap-2'>
+                            <Image
+                                src={match.team1.logoUrl}
+                                alt={match.team1.name}
+                                width={28}
+                                height={28}
+                                className="rounded-full bg-gray-800 p-0.5"
+                                data-ai-hint="team logo"
+                            />
+                             <Image
+                                src={match.team2.logoUrl}
+                                alt={match.team2.name}
+                                width={28}
+                                height={28}
+                                className="rounded-full bg-gray-800 p-0.5"
+                                data-ai-hint="team logo"
+                            />
+                          </div>
+                          {match.score && match.status === 'finished' ? (
+                            <p className="text-sm font-bold text-white">{match.score}</p>
+                          ) : (
+                             <p className="text-xs font-semibold text-gray-400">{match.time}</p>
+                          )}
+                           <Badge variant="secondary" className={cn("text-xs px-1.5 py-0.5 h-auto", statusMap[match.status].className)}>
+                                {statusMap[match.status].text}
+                           </Badge>
                       </Link>
                     )}
                   </div>
