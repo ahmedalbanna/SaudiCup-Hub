@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { use, useState } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { teams, players, matches, news } from '@/lib/mock-data';
@@ -26,8 +26,9 @@ import { NewsCard } from '@/components/cards/NewsCard';
 import { ShieldCheck, ShieldPlus } from 'lucide-react';
 import Link from 'next/link';
 
-export default function TeamProfilePage({ params }: { params: { id: string } }) {
-  const team = teams.find((t) => t.id === params.id);
+export default function TeamProfilePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
+  const team = teams.find((t) => t.id === id);
   const [isFollowing, setIsFollowing] = useState(false);
 
   if (!team) {
