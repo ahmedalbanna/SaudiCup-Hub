@@ -25,7 +25,7 @@ export function MatchCard({ match }: MatchCardProps) {
   }
 
   return (
-    <Card className="flex flex-col bg-card/50 border-border/50 text-foreground transition-all hover:border-border/80">
+    <Card className="flex flex-col bg-card/50 border-border/50 text-foreground transition-all hover:border-primary hover:shadow-lg hover:-translate-y-1">
       <CardHeader className="p-4">
         <div className="flex items-start justify-around">
           <div className="flex flex-col items-center gap-2 text-center w-2/5">

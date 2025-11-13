@@ -20,7 +20,7 @@ export function NewsCard({ article }: NewsCardProps) {
   const articleDate = new Date(article.date);
 
   return (
-    <Card className="flex flex-col overflow-hidden">
+    <Card className="flex flex-col overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
       <div className="relative aspect-video">
         <Image
           src={article.imageUrl}
