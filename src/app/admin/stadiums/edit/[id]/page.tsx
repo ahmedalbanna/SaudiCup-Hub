@@ -1,5 +1,6 @@
 
 'use client';
+import { use } from 'react';
 import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -10,8 +11,9 @@ import Link from "next/link";
 import { stadiums } from '@/lib/mock-data';
 import { notFound } from "next/navigation";
 
-export default function EditStadiumPage({ params }: { params: { id: string } }) {
-    const stadium = stadiums.find(s => s.id === params.id);
+export default function EditStadiumPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = use(params);
+    const stadium = stadiums.find(s => s.id === id);
     if (!stadium) {
         notFound();
     }

@@ -1,5 +1,6 @@
 
 'use client';
+import { use } from 'react';
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,8 +11,9 @@ import Link from "next/link";
 import { matches, teams } from '@/lib/mock-data';
 import { notFound } from "next/navigation";
 
-export default function EditMatchPage({ params }: { params: { id: string } }) {
-    const match = matches.find(m => m.id === params.id);
+export default function EditMatchPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = use(params);
+    const match = matches.find(m => m.id === id);
     if (!match) {
         notFound();
     }

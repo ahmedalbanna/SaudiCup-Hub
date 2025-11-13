@@ -1,4 +1,5 @@
 'use client';
+import { use } from 'react';
 import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
@@ -12,8 +13,9 @@ import Link from "next/link";
 import { news } from '@/lib/mock-data';
 import { notFound } from "next/navigation";
 
-export default function EditArticlePage({ params }: { params: { id: string } }) {
-    const article = news.find(n => n.id === params.id);
+export default function EditArticlePage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = use(params);
+    const article = news.find(n => n.id === id);
     if (!article) {
         notFound();
     }

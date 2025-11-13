@@ -1,4 +1,5 @@
-'use server';
+'use client';
+import { use } from 'react';
 import { notFound } from 'next/navigation';
 import { matches, players, teams } from '@/lib/mock-data';
 import Image from 'next/image';
@@ -21,12 +22,13 @@ import {
 import { Separator } from '@/components/ui/separator';
 import LiveCommentary from './LiveCommentary';
 
-export default async function MatchDetailsPage({
+export default function MatchDetailsPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const match = matches.find((m) => m.id === params.id);
+  const { id } = use(params);
+  const match = matches.find((m) => m.id === id);
 
   if (!match) {
     notFound();

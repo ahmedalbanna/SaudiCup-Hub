@@ -1,5 +1,6 @@
 
 'use client';
+import { use } from 'react';
 import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -11,8 +12,9 @@ import Link from "next/link";
 import { players, teams } from '@/lib/mock-data';
 import { notFound } from "next/navigation";
 
-export default function EditPlayerPage({ params }: { params: { id: string } }) {
-    const player = players.find(p => p.id === params.id);
+export default function EditPlayerPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = use(params);
+    const player = players.find(p => p.id === id);
     if (!player) {
         notFound();
     }

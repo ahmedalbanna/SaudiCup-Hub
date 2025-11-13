@@ -1,3 +1,5 @@
+'use client';
+import { use } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { news } from '@/lib/mock-data';
@@ -11,8 +13,9 @@ import {
 } from '@/components/ui/card';
 import { Calendar, User } from 'lucide-react';
 
-export default function NewsArticlePage({ params }: { params: { id: string } }) {
-  const article = news.find((n) => n.id === params.id);
+export default function NewsArticlePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
+  const article = news.find((n) => n.id === id);
 
   if (!article) {
     notFound();

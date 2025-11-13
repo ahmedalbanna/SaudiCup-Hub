@@ -1,3 +1,5 @@
+'use client';
+import { use } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { players, teams } from '@/lib/mock-data';
@@ -20,8 +22,9 @@ import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 import { User, Calendar, Shirt, Target, Star, UserPlus } from 'lucide-react';
 
-export default function PlayerProfilePage({ params }: { params: { id: string } }) {
-  const player = players.find((p) => p.id === params.id);
+export default function PlayerProfilePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
+  const player = players.find((p) => p.id === id);
 
   if (!player) {
     notFound();

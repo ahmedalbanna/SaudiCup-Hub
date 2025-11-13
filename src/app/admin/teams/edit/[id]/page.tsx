@@ -1,5 +1,6 @@
 
 'use client';
+import { use } from 'react';
 import { ChevronLeft, Upload } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -10,8 +11,9 @@ import Link from "next/link";
 import { teams } from '@/lib/mock-data';
 import { notFound } from "next/navigation";
 
-export default function EditTeamPage({ params }: { params: { id: string } }) {
-    const team = teams.find(t => t.id === params.id);
+export default function EditTeamPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = use(params);
+    const team = teams.find(t => t.id === id);
     if (!team) {
         notFound();
     }
