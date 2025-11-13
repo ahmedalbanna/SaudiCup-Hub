@@ -76,7 +76,7 @@ export default function CalendarClient({
 
   return (
     <div className="space-y-6">
-      <Card className="bg-gray-800/80 border-gray-700 text-white">
+      <Card className="bg-card/80 border-border text-foreground">
         <CardHeader>
           <div className="flex items-center justify-between">
             <h2 className="font-headline text-2xl">
@@ -93,7 +93,7 @@ export default function CalendarClient({
           </div>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-7 text-center font-bold text-gray-400 border-b border-gray-700 pb-2">
+          <div className="grid grid-cols-7 text-center font-bold text-muted-foreground border-b border-border pb-2">
             {dayNames.map((day) => (
               <div key={day}>{day}</div>
             ))}
@@ -113,31 +113,31 @@ export default function CalendarClient({
                     key={day.toString()}
                     onClick={() => setSelectedDate(day)}
                     className={cn(
-                      'relative h-40 border-b border-l border-gray-700 p-2 text-right cursor-pointer transition-colors flex flex-col',
+                      'relative h-40 border-b border-l border-border p-2 text-right cursor-pointer transition-colors flex flex-col',
                       dayIndex === 6 && 'border-l-0', // last item in row
-                      !isCurrentMonth && 'text-gray-600 bg-gray-900/50',
-                      isToday(day) && 'bg-lime-400/10',
-                      isSameDay(day, selectedDate) && 'bg-gray-700/80 ring-2 ring-lime-300 z-10',
-                       (isCurrentMonth && !isSameDay(day, selectedDate)) && 'hover:bg-gray-800'
+                      !isCurrentMonth && 'text-muted-foreground bg-muted/30',
+                      isToday(day) && 'bg-primary/10',
+                      isSameDay(day, selectedDate) && 'bg-muted/80 ring-2 ring-primary z-10',
+                       (isCurrentMonth && !isSameDay(day, selectedDate)) && 'hover:bg-muted/50'
                     )}
                   >
                     <span
                       className={cn(
                         'font-bold',
-                        isToday(day) ? 'text-lime-300' : isCurrentMonth ? 'text-white' : 'text-gray-500'
+                        isToday(day) ? 'text-primary' : isCurrentMonth ? 'text-foreground' : 'text-muted-foreground'
                       )}
                     >
                       {format(day, 'd')}
                     </span>
                     {match && isCurrentMonth && (
-                      <Link href={`/schedule/${match.id}`} className="flex-grow flex flex-col items-center justify-center text-center gap-1.5 p-1 -mx-2 -mb-2 rounded-b-md transition-colors hover:bg-gray-700/50">
+                      <Link href={`/schedule/${match.id}`} className="flex-grow flex flex-col items-center justify-center text-center gap-1.5 p-1 -mx-2 -mb-2 rounded-b-md transition-colors hover:bg-muted/50">
                           <div className='flex items-center justify-center gap-2'>
                             <Image
                                 src={match.team1.logoUrl}
                                 alt={match.team1.name}
                                 width={28}
                                 height={28}
-                                className="rounded-full bg-gray-800 p-0.5"
+                                className="rounded-full bg-background p-0.5"
                                 data-ai-hint="team logo"
                             />
                              <Image
@@ -145,14 +145,14 @@ export default function CalendarClient({
                                 alt={match.team2.name}
                                 width={28}
                                 height={28}
-                                className="rounded-full bg-gray-800 p-0.5"
+                                className="rounded-full bg-background p-0.5"
                                 data-ai-hint="team logo"
                             />
                           </div>
                           {match.score && match.status === 'finished' ? (
-                            <p className="text-sm font-bold text-white">{match.score}</p>
+                            <p className="text-sm font-bold text-foreground">{match.score}</p>
                           ) : (
-                             <p className="text-xs font-semibold text-gray-400">{match.time}</p>
+                             <p className="text-xs font-semibold text-muted-foreground">{match.time}</p>
                           )}
                            <Badge variant="secondary" className={cn("text-xs px-1.5 py-0.5 h-auto", statusMap[match.status].className)}>
                                 {statusMap[match.status].text}
@@ -168,7 +168,7 @@ export default function CalendarClient({
       </Card>
       
       <div className="pt-6">
-        <h3 className="font-headline text-2xl text-white mb-4">
+        <h3 className="font-headline text-2xl text-foreground mb-4">
           مباريات يوم {format(selectedDate, 'd MMMM yyyy', { locale: arSA })}
         </h3>
         {matchesOnSelectedDate.length > 0 ? (
@@ -178,8 +178,8 @@ export default function CalendarClient({
             ))}
           </div>
         ) : (
-          <Card className="bg-gray-800/80 border-gray-700">
-            <CardContent className="flex flex-col items-center justify-center p-12 text-center text-gray-400">
+          <Card className="bg-card/80 border-border">
+            <CardContent className="flex flex-col items-center justify-center p-12 text-center text-muted-foreground">
               <CalendarIcon className="h-12 w-12 mb-4"/>
               <p className="font-bold text-lg">لا توجد مباريات مجدولة</p>
               <p>لم يتم العثور على مباريات مجدولة لهذا اليوم.</p>

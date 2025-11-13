@@ -45,26 +45,26 @@ export default function MainLayout({
       enableSystem
       disableTransitionOnChange
     >
-      <div className="flex min-h-screen w-full flex-col bg-gray-900 text-gray-200">
-        <header className="sticky top-0 z-50 flex h-16 items-center justify-between gap-4 border-b border-gray-700 bg-gray-800/80 px-4 backdrop-blur-sm md:px-6">
+      <div className="flex min-h-screen w-full flex-col bg-background text-foreground">
+        <header className="sticky top-0 z-50 flex h-16 items-center justify-between gap-4 border-b border-border bg-background/80 px-4 backdrop-blur-sm md:px-6">
           <div className="flex items-center gap-4">
             <Link href="/dashboard" className="flex items-center gap-2">
               <Logo className="h-8 w-8" />
               <div className="text-right">
-                <p className="font-bold">روفرز الرياض</p>
-                <p className="text-xs text-gray-400">تأسست 2024</p>
+                <p className="font-bold text-foreground">روفرز الرياض</p>
+                <p className="text-xs text-muted-foreground">تأسست 2024</p>
               </div>
             </Link>
             <div className="hidden items-center gap-4 md:flex">
-              <div className="flex items-center gap-2 text-yellow-400">
+              <div className="flex items-center gap-2 text-accent">
                 <span className="font-bold">60,641</span>
-                <div className="h-5 w-5 rounded-full bg-yellow-400 text-gray-900 flex items-center justify-center text-xs font-bold">
+                <div className="h-5 w-5 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-xs font-bold">
                   F
                 </div>
               </div>
-              <div className="flex items-center gap-2 text-green-400">
+              <div className="flex items-center gap-2 text-primary">
                 <span className="font-bold">0</span>
-                <div className="h-5 w-5 rounded-full bg-green-400"></div>
+                <div className="h-5 w-5 rounded-full bg-primary"></div>
               </div>
             </div>
           </div>
@@ -75,12 +75,12 @@ export default function MainLayout({
             <ThemeToggle />
             <div className="hidden items-center gap-3 md:flex">
               <div className="flex-1">
-                <p className="text-xs text-gray-400 text-left">الموسم 1</p>
+                <p className="text-xs text-muted-foreground text-left">الموسم 1</p>
                 <Progress value={33} className="h-2 w-32" />
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-bold text-lg">1</span>
-                <span className="text-xs bg-yellow-500 text-black px-1.5 py-0.5 rounded-sm font-bold">
+                <span className="text-xs bg-accent text-accent-foreground px-1.5 py-0.5 rounded-sm font-bold">
                   XP
                 </span>
               </div>
@@ -134,7 +134,7 @@ export default function MainLayout({
           }}
         >
           <div className="relative z-10">{children}</div>
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-background/70 backdrop-blur-sm"></div>
         </main>
 
         <BottomNav />

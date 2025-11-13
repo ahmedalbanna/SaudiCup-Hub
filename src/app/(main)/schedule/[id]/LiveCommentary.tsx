@@ -126,9 +126,9 @@ export default function LiveCommentary({ match }: { match: Match }) {
       </CardHeader>
       <CardContent>
         {commentary.length === 0 && !isStreaming ? (
-            <div className="text-center text-muted-foreground py-12 bg-gray-900/50 rounded-lg">
-                <Mic className="h-12 w-12 mx-auto text-gray-500 mb-4" />
-                <p className="font-semibold text-lg">
+            <div className="text-center text-muted-foreground py-12 bg-muted/30 rounded-lg">
+                <Mic className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+                <p className="font-semibold text-lg text-foreground">
                     {match.status === 'live' ? 'البث المباشر جاهز' : 'التعليق غير متاح بعد'}
                 </p>
                 <p className="text-sm">
@@ -148,7 +148,7 @@ export default function LiveCommentary({ match }: { match: Match }) {
                     <span className="font-mono text-xs text-muted-foreground">{item.timestamp.split(' ')[0]}</span>
                     <div className="h-full w-px bg-border my-1"></div>
                 </div>
-              <div className="flex-1 rounded-lg bg-gray-800/80 p-4 border border-gray-700">
+              <div className="flex-1 rounded-lg bg-muted/50 p-4 border border-border">
                 <p>{item.comment}</p>
               </div>
             </div>

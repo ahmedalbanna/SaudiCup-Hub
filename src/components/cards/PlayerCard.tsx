@@ -23,14 +23,14 @@ export function PlayerCard({ player, team }: PlayerCardProps) {
 
   return (
     <Link href={`/players/${player.id}`} className="block group">
-       <Card className="bg-gradient-to-b from-green-900/50 via-gray-800 to-gray-900 border-2 border-gray-700 w-full aspect-[3/4] text-white font-headline transition-transform duration-300 group-hover:scale-105 group-hover:border-lime-300">
+       <Card className="bg-gradient-to-b from-primary/50 via-card to-background border-2 border-border w-full aspect-[3/4] text-foreground font-headline transition-transform duration-300 group-hover:scale-105 group-hover:border-primary">
         <CardContent className="relative p-2 h-full flex flex-col justify-end">
           {/* Background Player Image */}
           <Image
             src={player.imageUrl}
             alt={`صورة ${player.name}`}
             fill
-            className="object-cover rounded-lg opacity-40 group-hover:opacity-60 transition-opacity"
+            className="object-cover rounded-lg opacity-30 group-hover:opacity-50 transition-opacity"
             data-ai-hint="male portrait"
           />
 
@@ -52,14 +52,14 @@ export function PlayerCard({ player, team }: PlayerCardProps) {
                 </div>
 
                 {/* Divider */}
-                <hr className="border-gray-600 w-11/12 mx-auto" />
+                <hr className="border-border w-11/12 mx-auto" />
 
                 {/* Stats Grid */}
                 <div className="grid grid-cols-2 gap-x-4 gap-y-1 p-4 text-lg">
                   {stats.map(stat => (
                       <div key={stat.label} className="flex gap-2">
                           <span className="font-bold">{stat.value}</span>
-                          <span className="text-gray-400">{stat.label}</span>
+                          <span className="text-muted-foreground">{stat.label}</span>
                       </div>
                   ))}
                 </div>

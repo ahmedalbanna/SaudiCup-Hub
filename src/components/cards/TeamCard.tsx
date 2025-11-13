@@ -16,11 +16,11 @@ const StarRating = ({ rating }: { rating: number }) => {
   return (
     <div className="flex justify-center gap-1">
       {[...Array(fullStars)].map((_, i) => (
-        <Star key={`full-${i}`} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+        <Star key={`full-${i}`} className="h-5 w-5 text-accent fill-accent" />
       ))}
-      {halfStar && <StarHalf className="h-5 w-5 text-yellow-400 fill-yellow-400" />}
+      {halfStar && <StarHalf className="h-5 w-5 text-accent fill-accent" />}
       {[...Array(emptyStars)].map((_, i) => (
-        <Star key={`empty-${i}`} className="h-5 w-5 text-yellow-400/40 fill-yellow-400/20" />
+        <Star key={`empty-${i}`} className="h-5 w-5 text-accent/40 fill-accent/20" />
       ))}
     </div>
   );
@@ -30,7 +30,7 @@ const StarRating = ({ rating }: { rating: number }) => {
 export function TeamCard({ team }: TeamCardProps) {
   return (
     <Link href={`/teams/${team.id}`} className="block group">
-       <Card className="bg-gradient-to-b from-lime-300/80 to-lime-500/80 border-2 border-transparent w-full aspect-[3/4] text-gray-900 font-headline transition-transform duration-300 group-hover:scale-105 group-hover:border-lime-300">
+       <Card className="bg-gradient-to-b from-primary/80 to-primary/90 border-2 border-transparent w-full aspect-[3/4] text-primary-foreground font-headline transition-transform duration-300 group-hover:scale-105 group-hover:border-primary">
         <CardContent className="relative p-4 h-full flex flex-col justify-between items-center text-center">
             <h3 className="font-bold text-xl uppercase tracking-wider">{team.name}</h3>
 

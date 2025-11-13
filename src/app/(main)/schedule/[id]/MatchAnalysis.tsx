@@ -64,7 +64,7 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
   return (
     <div className="grid gap-8 lg:grid-cols-5">
       <div className="lg:col-span-2">
-        <Card className="bg-gray-800/50 border-gray-700/50 sticky top-20">
+        <Card className="bg-card/50 border-border/50 sticky top-20">
           <CardHeader>
             <CardTitle>مولد تحليل المباريات</CardTitle>
             <CardDescription>
@@ -129,15 +129,15 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
 
       <div className="lg:col-span-3">
         {!analysisResult && !isLoading && (
-            <div className="flex flex-col items-center justify-center text-center text-muted-foreground h-full bg-gray-900/50 rounded-lg p-8">
-                <BrainCircuit className="h-16 w-16 text-gray-600 mb-4" />
-                <h3 className="text-xl font-bold text-gray-300">نتائج تحليل الذكاء الاصطناعي</h3>
+            <div className="flex flex-col items-center justify-center text-center text-muted-foreground h-full bg-muted/30 rounded-lg p-8">
+                <BrainCircuit className="h-16 w-16 text-muted-foreground mb-4" />
+                <h3 className="text-xl font-bold text-foreground">نتائج تحليل الذكاء الاصطناعي</h3>
                 <p>ستظهر الرؤى والنتائج المحتملة هنا بمجرد تشغيل التحليل.</p>
             </div>
         )}
         {isLoading && (
           <div className="space-y-8">
-            <Card className="bg-gray-800/30 border-gray-700/30">
+            <Card className="bg-card/30 border-border/30">
               <CardHeader className="flex flex-row items-center gap-3">
                 <Lightbulb className="h-6 w-6 text-accent" />
                 <CardTitle>الرؤى الرئيسية</CardTitle>
@@ -149,7 +149,7 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
                 <Skeleton className="h-4 w-[85%]" />
               </CardContent>
             </Card>
-            <Card className="bg-gray-800/30 border-gray-700/30">
+            <Card className="bg-card/30 border-border/30">
               <CardHeader className="flex flex-row items-center gap-3">
                 <Sparkles className="h-6 w-6 text-primary" />
                 <CardTitle>النتائج المحتملة</CardTitle>
@@ -164,21 +164,21 @@ export default function MatchAnalysis({ getAnalysis, initialData }: MatchAnalysi
         )}
         {analysisResult && (
           <div className="space-y-8 animate-in fade-in-50 duration-500">
-            <Card className="bg-gray-800/80 border-gray-700/80">
+            <Card className="bg-card/80 border-border/80">
               <CardHeader className="flex flex-row items-center gap-3">
                 <Lightbulb className="h-6 w-6 text-accent" />
                 <CardTitle>الرؤى الرئيسية</CardTitle>
               </CardHeader>
-              <CardContent className="prose prose-invert prose-p:text-gray-300">
+              <CardContent className="prose prose-invert prose-p:text-muted-foreground">
                 <p className="whitespace-pre-wrap">{analysisResult.keyInsights}</p>
               </CardContent>
             </Card>
-            <Card className="bg-gray-800/80 border-gray-700/80">
+            <Card className="bg-card/80 border-border/80">
               <CardHeader className="flex flex-row items-center gap-3">
                 <Sparkles className="h-6 w-6 text-primary" />
                 <CardTitle>النتائج المحتملة</CardTitle>
               </CardHeader>
-              <CardContent className="prose prose-invert prose-p:text-gray-300">
+              <CardContent className="prose prose-invert prose-p:text-muted-foreground">
                 <p className="whitespace-pre-wrap">{analysisResult.potentialOutcomes}</p>
               </CardContent>
             </Card>

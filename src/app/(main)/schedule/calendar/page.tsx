@@ -8,7 +8,7 @@ export default async function CalendarPage() {
   
   return (
     <>
-      <h1 className="font-headline text-lg font-semibold md:text-2xl mb-4 text-white">
+      <h1 className="font-headline text-lg font-semibold md:text-2xl mb-4 text-foreground">
         تقويم المباريات
       </h1>
       <CalendarClient matches={matches} teams={teams} mainTeamId={mainTeamId} />

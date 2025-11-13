@@ -13,11 +13,11 @@ import {
 export default function Dashboard() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full">
-      <div className="text-white animate-fade-in-up">
+      <div className="text-foreground animate-fade-in-up">
         <h1 className="text-5xl font-bold font-headline uppercase tracking-wider">
           تحديات بناء الفريق
         </h1>
-        <p className="mt-4 text-lg text-gray-300 max-w-lg">
+        <p className="mt-4 text-lg text-muted-foreground max-w-lg">
           أكمل التحديات عن طريق استبدال العناصر لكسب مكافآت رائعة.
         </p>
         <div className="mt-8 flex gap-4">
@@ -27,10 +27,10 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="flex justify-center items-center animate-fade-in">
-        <Card className="bg-gray-800/70 border-gray-700 w-[350px] h-[450px] flex flex-col justify-center items-center text-center">
+        <Card className="bg-card/70 border-border w-[350px] h-[450px] flex flex-col justify-center items-center text-center">
             <CardContent>
-                <p className='font-bold text-8xl text-lime-300 font-headline'>FUT</p>
-                <p className='font-bold text-8xl text-lime-300 font-headline'>24</p>
+                <p className='font-bold text-8xl text-primary font-headline'>FUT</p>
+                <p className='font-bold text-8xl text-primary font-headline'>24</p>
             </CardContent>
         </Card>
       </div>

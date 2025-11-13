@@ -63,7 +63,7 @@ export default async function MatchDetailsPage({
   return (
     <div className="mx-auto grid w-full max-w-6xl gap-6">
       <h1 className="sr-only">تفاصيل المباراة</h1>
-      <Card className="bg-gray-800/50 border-gray-700/50 text-white">
+      <Card className="bg-card/50 border-border/50 text-foreground">
         <CardHeader className="p-4 md:p-6">
           <div className="flex items-center justify-between">
             <div className="flex flex-col items-center gap-3 text-center w-1/3">
@@ -72,7 +72,7 @@ export default async function MatchDetailsPage({
                 alt={`شعار ${match.team1.name}`}
                 width={96}
                 height={96}
-                className="rounded-full bg-gray-700/50 p-2"
+                className="rounded-full bg-muted/50 p-2"
                 data-ai-hint="team logo"
               />
               <span className="font-headline text-xl md:text-2xl font-bold">
@@ -80,11 +80,11 @@ export default async function MatchDetailsPage({
               </span>
             </div>
             <div className="text-center w-1/3">
-              <p className="font-bold text-5xl md:text-6xl text-lime-300 font-headline">
+              <p className="font-bold text-5xl md:text-6xl text-primary font-headline">
                 {match.score ?? 'VS'}
               </p>
-              <p className="text-sm text-gray-300 mt-2">{match.venue}</p>
-              <p className="text-sm text-gray-400">{new Date(match.date).toLocaleDateString('ar-SA', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              <p className="text-sm text-muted-foreground mt-2">{match.venue}</p>
+              <p className="text-sm text-muted-foreground">{new Date(match.date).toLocaleDateString('ar-SA', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
             </div>
             <div className="flex flex-col items-center gap-3 text-center w-1/3">
               <Image
@@ -92,7 +92,7 @@ export default async function MatchDetailsPage({
                 alt={`شعار ${match.team2.name}`}
                 width={96}
                 height={96}
-                className="rounded-full bg-gray-700/50 p-2"
+                className="rounded-full bg-muted/50 p-2"
                 data-ai-hint="team logo"
               />
               <span className="font-headline text-xl md:text-2xl font-bold">
@@ -103,23 +103,23 @@ export default async function MatchDetailsPage({
         </CardHeader>
       </Card>
       <Tabs defaultValue="commentary" dir="rtl">
-        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5 bg-gray-800/80 border border-gray-700">
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5 bg-muted/80 border border-border">
           <TabsTrigger value="commentary">التعليق المباشر</TabsTrigger>
           <TabsTrigger value="analysis">تحليل AI</TabsTrigger>
           <TabsTrigger value="lineups">التشكيلات</TabsTrigger>
           <TabsTrigger value="stats">الإحصائيات</TabsTrigger>
           <TabsTrigger value="h2h">المواجهات</TabsTrigger>
         </TabsList>
-         <TabsContent value="commentary" className="rounded-lg bg-gray-900/50 p-4 lg:p-6">
+         <TabsContent value="commentary" className="rounded-lg bg-card/50 p-4 lg:p-6">
           <LiveCommentary match={match} />
         </TabsContent>
-        <TabsContent value="analysis" className="rounded-lg bg-gray-900/50 p-4 lg:p-6">
+        <TabsContent value="analysis" className="rounded-lg bg-card/50 p-4 lg:p-6">
           <MatchAnalysis 
             getAnalysis={getAnalysis}
             initialData={{historicalPerformance, teamLineups, liveScores}}
           />
         </TabsContent>
-        <TabsContent value="lineups" className="rounded-lg bg-gray-900/50">
+        <TabsContent value="lineups" className="rounded-lg bg-card/50">
           <Card className="bg-transparent border-none shadow-none">
             <CardHeader>
               <CardTitle>تشكيلات الفرق</CardTitle>
@@ -147,7 +147,7 @@ export default async function MatchDetailsPage({
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="stats" className="rounded-lg bg-gray-900/50">
+        <TabsContent value="stats" className="rounded-lg bg-card/50">
            <Card className="bg-transparent border-none shadow-none">
             <CardHeader>
                 <CardTitle>إحصائيات المباراة</CardTitle>
@@ -173,7 +173,7 @@ export default async function MatchDetailsPage({
             </CardContent>
            </Card>
         </TabsContent>
-        <TabsContent value="h2h" className="rounded-lg bg-gray-900/50">
+        <TabsContent value="h2h" className="rounded-lg bg-card/50">
            <Card className="bg-transparent border-none shadow-none">
             <CardHeader>
                 <CardTitle>المواجهات المباشرة</CardTitle>
