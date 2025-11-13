@@ -19,11 +19,6 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Separator } from '@/components/ui/separator';
-import MatchAnalysis from './MatchAnalysis';
-import {
-  analyzeMatch,
-  type AnalyzeMatchInput,
-} from '@/ai/flows/ai-powered-match-analysis';
 import LiveCommentary from './LiveCommentary';
 
 export default async function MatchDetailsPage({
@@ -39,26 +34,6 @@ export default async function MatchDetailsPage({
 
   const team1Players = players.filter((p) => p.teamId === match.team1.id);
   const team2Players = players.filter((p) => p.teamId === match.team2.id);
-
-  const historicalPerformance = `
-- ${match.team1.name}: آخر 5 مباريات: ف-ف-خ-ت-ف. سجل هجومي قوي بمعدل 2.4 هدف في المباراة.
-- ${match.team2.name}: آخر 5 مباريات: ف-ت-خ-ف-ت. معروف بدفاعه الصلب، حيث استقبل 0.8 هدف فقط في المباراة الواحدة.
-- المواجهات المباشرة: في آخر 3 مواجهات، فاز ${match.team1.name} في مباراتين، وفاز ${match.team2.name} في واحدة.
-`;
-
-  const teamLineups = `
-- ${match.team1.name} (4-3-3): ${team1Players.slice(0,2).map(p => p.name).join(', ')} وآخرون. اللاعب الرئيسي ${team1Players[0].name} في أفضل حالاته.
-- ${match.team2.name} (4-4-2): ${team2Players.slice(0,2).map(p => p.name).join(', ')} وآخرون. يفتقدون مدافعهم الرئيسي بسبب الإصابة.
-`;
-
-  const liveScores = match.score ? `النتيجة الحالية هي ${match.team1.name} ${match.score} ${match.team2.name}. المباراة في الدقيقة 80.` : `المباراة لم تبدأ بعد.`;
-
-
-  async function getAnalysis(data: AnalyzeMatchInput) {
-    'use server';
-    return await analyzeMatch(data);
-  }
-
 
   return (
     <div className="mx-auto grid w-full max-w-6xl gap-6">
@@ -103,21 +78,14 @@ export default async function MatchDetailsPage({
         </CardHeader>
       </Card>
       <Tabs defaultValue="commentary" dir="rtl">
-        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5 bg-muted/80 border border-border">
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 bg-muted/80 border border-border">
           <TabsTrigger value="commentary">التعليق المباشر</TabsTrigger>
-          <TabsTrigger value="analysis">تحليل AI</TabsTrigger>
           <TabsTrigger value="lineups">التشكيلات</TabsTrigger>
           <TabsTrigger value="stats">الإحصائيات</TabsTrigger>
           <TabsTrigger value="h2h">المواجهات</TabsTrigger>
         </TabsList>
          <TabsContent value="commentary" className="rounded-lg bg-card/50 p-4 lg:p-6">
           <LiveCommentary match={match} />
-        </TabsContent>
-        <TabsContent value="analysis" className="rounded-lg bg-card/50 p-4 lg:p-6">
-          <MatchAnalysis 
-            getAnalysis={getAnalysis}
-            initialData={{historicalPerformance, teamLineups, liveScores}}
-          />
         </TabsContent>
         <TabsContent value="lineups" className="rounded-lg bg-card/50">
           <Card className="bg-transparent border-none shadow-none">
