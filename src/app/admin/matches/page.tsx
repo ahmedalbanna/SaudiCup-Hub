@@ -35,11 +35,18 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 
 export default function AdminMatchesPage() {
-    const statusMap = {
+    const statusMap: {[key: string]: string} = {
         scheduled: 'مجدولة',
         live: 'مباشر',
         finished: 'انتهت'
     }
+
+    const statusBadgeVariant: {[key: string]: "default" | "secondary" | "destructive" | "outline" | null | undefined} = {
+        scheduled: 'default',
+        live: 'destructive',
+        finished: 'secondary'
+    }
+
 
     return (
         <Card>
@@ -91,7 +98,7 @@ export default function AdminMatchesPage() {
                       </TableCell>
                       <TableCell>{match.score ?? '-'}</TableCell>
                       <TableCell>
-                        <Badge variant={match.status === 'finished' ? 'secondary' : 'default'} className={match.status === 'live' ? 'bg-red-500 text-white' : ''}>
+                        <Badge variant={statusBadgeVariant[match.status]}>
                           {statusMap[match.status]}
                         </Badge>
                       </TableCell>

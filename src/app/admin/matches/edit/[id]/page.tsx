@@ -17,7 +17,7 @@ export default function EditMatchPage({ params }: { params: { id: string } }) {
     }
 
     return (
-        <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
+        <div className="mx-auto grid max-w-3xl flex-1 auto-rows-max gap-4">
             <div className="flex items-center gap-4">
               <Button variant="outline" size="icon" className="h-7 w-7" asChild>
                 <Link href="/admin/matches">
@@ -35,83 +35,79 @@ export default function EditMatchPage({ params }: { params: { id: string } }) {
                 <Button size="sm">حفظ التغييرات</Button>
               </div>
             </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              <div className="grid auto-rows-max items-start gap-4 lg:col-span-3">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>تفاصيل المباراة</CardTitle>
-                    <CardDescription>
-                      قم بتحديث تفاصيل المباراة.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid gap-6">
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="team1">الفريق الأول</Label>
-                                <Select defaultValue={match.team1.id}>
-                                    <SelectTrigger id="team1" aria-label="اختر الفريق الأول">
-                                        <SelectValue placeholder="اختر الفريق الأول" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        {teams.map(team => (
-                                            <SelectItem key={team.id} value={team.id}>{team.name}</SelectItem>
-                                        ))}
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                            <div className="grid gap-3">
-                                <Label htmlFor="team2">الفريق الثاني</Label>
-                                <Select defaultValue={match.team2.id}>
-                                    <SelectTrigger id="team2" aria-label="اختر الفريق الثاني">
-                                        <SelectValue placeholder="اختر الفريق الثاني" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        {teams.map(team => (
-                                            <SelectItem key={team.id} value={team.id}>{team.name}</SelectItem>
-                                        ))}
-                                    </SelectContent>
-                                </Select>
-                            </div>
+            <Card>
+              <CardHeader>
+                <CardTitle>تفاصيل المباراة</CardTitle>
+                <CardDescription>
+                  قم بتحديث تفاصيل المباراة.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid gap-6">
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="grid gap-3">
+                            <Label htmlFor="team1">الفريق الأول</Label>
+                            <Select defaultValue={match.team1.id}>
+                                <SelectTrigger id="team1" aria-label="اختر الفريق الأول">
+                                    <SelectValue placeholder="اختر الفريق الأول" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {teams.map(team => (
+                                        <SelectItem key={team.id} value={team.id}>{team.name}</SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
                         </div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="date">التاريخ</Label>
-                                <Input id="date" type="date" defaultValue={match.date} />
-                            </div>
-                            <div className="grid gap-3">
-                                <Label htmlFor="time">الوقت</Label>
-                                <Input id="time" type="time" defaultValue={match.time} />
-                            </div>
-                             <div className="grid gap-3 col-span-2">
-                                <Label htmlFor="venue">الملعب</Label>
-                                <Input id="venue" type="text" defaultValue={match.venue} />
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="status">الحالة</Label>
-                                <Select defaultValue={match.status}>
-                                  <SelectTrigger id="status" aria-label="اختر الحالة">
-                                    <SelectValue placeholder="اختر الحالة" />
-                                  </SelectTrigger>
-                                  <SelectContent>
-                                    <SelectItem value="scheduled">مجدولة</SelectItem>
-                                    <SelectItem value="live">مباشر</SelectItem>
-                                    <SelectItem value="finished">انتهت</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                            </div>
-                             <div className="grid gap-3">
-                                <Label htmlFor="score">النتيجة</Label>
-                                <Input id="score" type="text" defaultValue={match.score} />
-                            </div>
+                        <div className="grid gap-3">
+                            <Label htmlFor="team2">الفريق الثاني</Label>
+                            <Select defaultValue={match.team2.id}>
+                                <SelectTrigger id="team2" aria-label="اختر الفريق الثاني">
+                                    <SelectValue placeholder="اختر الفريق الثاني" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {teams.map(team => (
+                                        <SelectItem key={team.id} value={team.id}>{team.name}</SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
                         </div>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                         <div className="grid gap-3">
+                            <Label htmlFor="venue">الملعب</Label>
+                            <Input id="venue" type="text" defaultValue={match.venue} />
+                        </div>
+                         <div className="grid gap-3">
+                            <Label htmlFor="status">الحالة</Label>
+                            <Select defaultValue={match.status}>
+                              <SelectTrigger id="status" aria-label="اختر الحالة">
+                                <SelectValue placeholder="اختر الحالة" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="scheduled">مجدولة</SelectItem>
+                                <SelectItem value="live">مباشر</SelectItem>
+                                <SelectItem value="finished">انتهت</SelectItem>
+                              </SelectContent>
+                            </Select>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div className="grid gap-3">
+                            <Label htmlFor="date">التاريخ</Label>
+                            <Input id="date" type="date" defaultValue={match.date.split('T')[0]} />
+                        </div>
+                        <div className="grid gap-3">
+                            <Label htmlFor="time">الوقت</Label>
+                            <Input id="time" type="time" defaultValue={match.time} />
+                        </div>
+                         <div className="grid gap-3">
+                            <Label htmlFor="score">النتيجة</Label>
+                            <Input id="score" type="text" defaultValue={match.score} placeholder="مثال: 2-1" />
+                        </div>
+                    </div>
+                </div>
+              </CardContent>
+            </Card>
             <div className="flex items-center justify-center gap-2 md:hidden">
               <Button variant="outline" size="sm">
                 تجاهل

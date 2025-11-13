@@ -61,41 +61,41 @@ export default async function MatchDetailsPage({
 
 
   return (
-    <div className="mx-auto grid w-full max-w-6xl gap-2">
+    <div className="mx-auto grid w-full max-w-6xl gap-6">
       <h1 className="sr-only">تفاصيل المباراة</h1>
-      <Card>
-        <CardHeader className="p-4">
-          <div className="flex items-center justify-around">
-            <div className="flex flex-col items-center gap-2 text-center w-1/3">
+      <Card className="bg-gray-800/50 border-gray-700/50 text-white">
+        <CardHeader className="p-4 md:p-6">
+          <div className="flex items-center justify-between">
+            <div className="flex flex-col items-center gap-3 text-center w-1/3">
               <Image
                 src={match.team1.logoUrl}
                 alt={`شعار ${match.team1.name}`}
-                width={80}
-                height={80}
-                className="rounded-full"
+                width={96}
+                height={96}
+                className="rounded-full bg-gray-700/50 p-2"
                 data-ai-hint="team logo"
               />
-              <span className="font-headline text-xl font-semibold">
+              <span className="font-headline text-xl md:text-2xl font-bold">
                 {match.team1.name}
               </span>
             </div>
             <div className="text-center w-1/3">
-              <p className="font-bold text-4xl text-primary">
-                {match.score ?? 'ضد'}
+              <p className="font-bold text-5xl md:text-6xl text-lime-300 font-headline">
+                {match.score ?? 'VS'}
               </p>
-              <p className="text-sm text-muted-foreground">{match.venue}</p>
-              <p className="text-sm text-muted-foreground">{new Date(match.date).toLocaleDateString('ar-SA')}</p>
+              <p className="text-sm text-gray-300 mt-2">{match.venue}</p>
+              <p className="text-sm text-gray-400">{new Date(match.date).toLocaleDateString('ar-SA', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
             </div>
-            <div className="flex flex-col items-center gap-2 text-center w-1/3">
+            <div className="flex flex-col items-center gap-3 text-center w-1/3">
               <Image
                 src={match.team2.logoUrl}
                 alt={`شعار ${match.team2.name}`}
-                width={80}
-                height={80}
-                className="rounded-full"
+                width={96}
+                height={96}
+                className="rounded-full bg-gray-700/50 p-2"
                 data-ai-hint="team logo"
               />
-              <span className="font-headline text-xl font-semibold">
+              <span className="font-headline text-xl md:text-2xl font-bold">
                 {match.team2.name}
               </span>
             </div>
@@ -103,7 +103,7 @@ export default async function MatchDetailsPage({
         </CardHeader>
       </Card>
       <Tabs defaultValue="commentary" dir="rtl">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5 bg-gray-800/80 border border-gray-700">
           <TabsTrigger value="commentary">التعليق المباشر</TabsTrigger>
           <TabsTrigger value="analysis">تحليل AI</TabsTrigger>
           <TabsTrigger value="lineups">التشكيلات</TabsTrigger>
@@ -162,12 +162,12 @@ export default async function MatchDetailsPage({
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        <TableRow><TableCell className="text-right">12</TableCell><TableCell className="text-center font-medium">تسديدات</TableCell><TableCell className="text-left">8</TableCell></TableRow>
-                        <TableRow><TableCell className="text-right">5</TableCell><TableCell className="text-center font-medium">تسديدات على المرمى</TableCell><TableCell className="text-left">3</TableCell></TableRow>
-                        <TableRow><TableCell className="text-right">58%</TableCell><TableCell className="text-center font-medium">استحواذ</TableCell><TableCell className="text-left">42%</TableCell></TableRow>
-                        <TableRow><TableCell className="text-right">450</TableCell><TableCell className="text-center font-medium">تمريرات</TableCell><TableCell className="text-left">320</TableCell></TableRow>
-                        <TableRow><TableCell className="text-right">85%</TableCell><TableCell className="text-center font-medium">دقة التمرير</TableCell><TableCell className="text-left">78%</TableCell></TableRow>
-                        <TableRow><TableCell className="text-right">2</TableCell><TableCell className="text-center font-medium">بطاقات صفراء</TableCell><TableCell className="text-left">3</TableCell></TableRow>
+                        <TableRow><TableCell className="text-right font-bold text-lg">12</TableCell><TableCell className="text-center font-medium">تسديدات</TableCell><TableCell className="text-left font-bold text-lg">8</TableCell></TableRow>
+                        <TableRow><TableCell className="text-right font-bold text-lg">5</TableCell><TableCell className="text-center font-medium">تسديدات على المرمى</TableCell><TableCell className="text-left font-bold text-lg">3</TableCell></TableRow>
+                        <TableRow><TableCell className="text-right font-bold text-lg">58%</TableCell><TableCell className="text-center font-medium">استحواذ</TableCell><TableCell className="text-left font-bold text-lg">42%</TableCell></TableRow>
+                        <TableRow><TableCell className="text-right font-bold text-lg">450</TableCell><TableCell className="text-center font-medium">تمريرات</TableCell><TableCell className="text-left font-bold text-lg">320</TableCell></TableRow>
+                        <TableRow><TableCell className="text-right font-bold text-lg">85%</TableCell><TableCell className="text-center font-medium">دقة التمرير</TableCell><TableCell className="text-left font-bold text-lg">78%</TableCell></TableRow>
+                        <TableRow><TableCell className="text-right font-bold text-lg">2</TableCell><TableCell className="text-center font-medium">بطاقات صفراء</TableCell><TableCell className="text-left font-bold text-lg">3</TableCell></TableRow>
                     </TableBody>
                 </Table>
             </CardContent>
