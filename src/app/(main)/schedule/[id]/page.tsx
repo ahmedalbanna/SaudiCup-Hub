@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/table';
 import { Separator } from '@/components/ui/separator';
 import LiveCommentary from './LiveCommentary';
+import { Info } from 'lucide-react';
 
 export default function MatchDetailsPage({
   params,
@@ -36,6 +37,15 @@ export default function MatchDetailsPage({
 
   const team1Players = players.filter((p) => p.teamId === match.team1.id);
   const team2Players = players.filter((p) => p.teamId === match.team2.id);
+
+  const isScheduled = match.status === 'scheduled';
+  
+  const TABS = [
+    { value: 'commentary', label: 'التعليق المباشر' },
+    { value: 'lineups', label: 'التشكيلات' },
+    { value: 'stats', label: 'الإحصائيات' },
+    { value: 'h2h', label: 'المواجهات' },
+  ];
 
   return (
     <div className="mx-auto grid w-full max-w-6xl gap-6">
@@ -79,17 +89,25 @@ export default function MatchDetailsPage({
           </div>
         </CardHeader>
       </Card>
-      <Tabs defaultValue="commentary" dir="rtl">
-        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 bg-muted/80 border border-border">
-          <TabsTrigger value="commentary">التعليق المباشر</TabsTrigger>
-          <TabsTrigger value="lineups">التشكيلات</TabsTrigger>
-          <TabsTrigger value="stats">الإحصائيات</TabsTrigger>
-          <TabsTrigger value="h2h">المواجهات</TabsTrigger>
+      <Tabs defaultValue={TABS[0].value} dir="rtl">
+        <TabsList className={`grid w-full ${isScheduled ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-4'} bg-muted/80 border border-border`}>
+          {TABS.filter(tab => !isScheduled || (tab.value !== 'commentary' && tab.value !== 'stats')).map(tab => (
+            <TabsTrigger key={tab.value} value={tab.value}>{tab.label}</TabsTrigger>
+          ))}
         </TabsList>
          <TabsContent value="commentary" className="rounded-lg bg-card/50 p-4 lg:p-6">
-          <LiveCommentary match={match} />
+          {!isScheduled ? <LiveCommentary match={match} /> : null}
         </TabsContent>
         <TabsContent value="lineups" className="rounded-lg bg-card/50">
+           {isScheduled ? (
+            <Card className="bg-transparent border-none shadow-none">
+              <CardContent className="flex flex-col items-center justify-center p-12 text-center text-muted-foreground">
+                <Info className="h-12 w-12 mb-4" />
+                <p className="font-bold text-lg">التشكيلات غير متاحة بعد</p>
+                <p>سيتم إعلان تشكيلات الفرق قبل بدء المباراة بقليل.</p>
+              </CardContent>
+            </Card>
+          ) : (
           <Card className="bg-transparent border-none shadow-none">
             <CardHeader>
               <CardTitle>تشكيلات الفرق</CardTitle>
@@ -116,8 +134,10 @@ export default function MatchDetailsPage({
               </div>
             </CardContent>
           </Card>
+          )}
         </TabsContent>
         <TabsContent value="stats" className="rounded-lg bg-card/50">
+          {!isScheduled ? (
            <Card className="bg-transparent border-none shadow-none">
             <CardHeader>
                 <CardTitle>إحصائيات المباراة</CardTitle>
@@ -142,6 +162,7 @@ export default function MatchDetailsPage({
                 </Table>
             </CardContent>
            </Card>
+           ) : null}
         </TabsContent>
         <TabsContent value="h2h" className="rounded-lg bg-card/50">
            <Card className="bg-transparent border-none shadow-none">
