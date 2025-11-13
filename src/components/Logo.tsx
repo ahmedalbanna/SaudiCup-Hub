@@ -12,12 +12,12 @@ export function Logo(props: SVGProps<SVGSVGElement>) {
       <title>Saudi Cup Logo</title>
       <defs>
         <linearGradient id="ballGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style={{stopColor: 'hsl(var(--primary))', stopOpacity: 0.7}} />
-          <stop offset="100%" style={{stopColor: 'hsl(var(--primary))', stopOpacity: 1}} />
+          <stop offset="0%" stopColor="#4169E1" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#4169E1" stopOpacity="1" />
         </linearGradient>
          <linearGradient id="trophyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-           <stop offset="0%" style={{stopColor: 'hsl(var(--accent))', stopOpacity: 0.8}} />
-          <stop offset="100%" style={{stopColor: 'hsl(var(--accent))'}} />
+           <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="#D4AF37" />
         </linearGradient>
       </defs>
       <g transform="scale(3.8) translate(-27, -4)">
