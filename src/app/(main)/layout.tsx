@@ -15,6 +15,7 @@ import {
   GalleryHorizontal,
   LayoutDashboard,
   ShieldCheck,
+  Heart,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -79,8 +80,14 @@ export default function MainLayout({
 
           <MainNav />
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             <ThemeToggle />
+            <Button variant="ghost" size="icon" asChild>
+              <Link href="/favorites">
+                <Heart className="h-5 w-5" />
+                <span className="sr-only">المفضلة</span>
+              </Link>
+            </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="relative">
