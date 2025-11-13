@@ -49,12 +49,6 @@ export default function MainLayout({
   ];
 
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="dark"
-      enableSystem
-      disableTransitionOnChange
-    >
       <div className="flex min-h-screen w-full flex-col bg-background text-foreground">
         <header className="sticky top-0 z-50 flex h-16 items-center justify-between gap-4 border-b border-border bg-background/95 px-4 backdrop-blur-sm md:px-6">
           <div className="flex items-center gap-4">
@@ -163,6 +157,7 @@ export default function MainLayout({
 
         <BottomNav />
       </div>
-    </ThemeProvider>
   );
 }
+
+    

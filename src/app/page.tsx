@@ -1,6 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
-
+import {
+  Bell,
+  Heart,
+  ShieldCheck,
+  ArrowLeft,
+  Instagram,
+  Twitter,
+  Facebook,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -9,64 +17,143 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+
 import { MatchCard } from '@/components/cards/MatchCard';
 import { NewsCard } from '@/components/cards/NewsCard';
 import { matches, news } from '@/lib/mock-data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Logo } from '@/components/Logo';
-import { ArrowLeft, Instagram, Twitter, Facebook } from 'lucide-react';
+import { MainNav } from './components/MainNav';
+import { LiveClock } from './components/LiveClock';
+import { ThemeToggle } from './components/ThemeToggle';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero');
+  // Mock auth state
+  const isLoggedIn = false;
+  const notifications = [
+    { title: 'نتيجة المباراة', description: 'روفرز الرياض 2 - 1 جيتس جدة', time: 'منذ 5 دقائق' },
+    { title: 'خبر جديد', description: 'تم الإعلان عن جدول المباريات الجديد.', time: 'منذ 1 ساعة' },
+    { title: 'تذكير بالمباراة', description: 'ديناموز الدمام ضد ملوك مكة ستبدأ قريبًا.', time: 'منذ 3 ساعات' },
+  ];
+
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center">
-          <Link href="/" className="ml-6 flex items-center space-x-2">
-            <Logo className="h-8 w-8" />
-            <span className="font-bold sm:inline-block font-headline">
-              مركز كأس السعودية
-            </span>
-          </Link>
-          <nav className="hidden flex-1 items-center space-x-4 text-sm font-medium md:flex">
-            <Link
-              href="/schedule"
-              className="text-foreground/60 transition-colors hover:text-foreground/80"
-            >
-              الجدول
+       <header className="sticky top-0 z-50 flex h-16 items-center justify-between gap-4 border-b border-border bg-background/95 px-4 backdrop-blur-sm md:px-6">
+          <div className="flex items-center gap-4">
+            <Link href={isLoggedIn ? "/dashboard" : "/"} className="flex items-center gap-2">
+              <Logo className="h-8 w-8" />
+              <div className="text-right">
+                <p className="font-bold text-foreground">كأس السعودية</p>
+                <p className="text-xs text-muted-foreground">تأسست 2024</p>
+              </div>
             </Link>
-            <Link
-              href="/teams"
-              className="text-foreground/60 transition-colors hover:text-foreground/80"
-            >
-              الفرق
-            </Link>
-            <Link
-              href="/players"
-              className="text-foreground/60 transition-colors hover:text-foreground/80"
-            >
-              اللاعبون
-            </Link>
-            <Link
-              href="/news"
-              className="text-foreground/60 transition-colors hover:text-foreground/80"
-            >
-              الأخبار
-            </Link>
-          </nav>
-          <div className="flex flex-1 items-center justify-end space-x-4">
-            <nav className="flex items-center space-x-2">
-              <Button asChild variant="ghost" size="sm">
-                <Link href="/login">تسجيل الدخول</Link>
-              </Button>
-              <Button asChild size="sm">
-                <Link href="/register">التسجيل</Link>
-              </Button>
-            </nav>
           </div>
-        </div>
-      </header>
+
+          <LiveClock />
+
+          <MainNav />
+
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            {isLoggedIn ? (
+              <>
+                <Button variant="ghost" size="icon" asChild>
+                  <Link href="/favorites">
+                    <Heart className="h-5 w-5" />
+                    <span className="sr-only">المفضلة</span>
+                  </Link>
+                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="relative">
+                      <Bell className="h-5 w-5" />
+                      <Badge className="absolute -top-1 -right-1 h-4 w-4 justify-center p-0 text-xs">{notifications.length}</Badge>
+                      <span className="sr-only">فتح الإشعارات</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-80" align="end">
+                    <DropdownMenuLabel>الإشعارات</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {notifications.map((notification, index) => (
+                      <DropdownMenuItem key={index} className="flex flex-col items-start gap-1">
+                        <p className="font-semibold">{notification.title}</p>
+                        <p className="text-xs text-muted-foreground">{notification.description}</p>
+                        <p className="text-xs text-muted-foreground/80">{notification.time}</p>
+                      </DropdownMenuItem>
+                    ))}
+                    <DropdownMenuSeparator />
+                     <DropdownMenuItem className="justify-center">
+                        <Link href="#">عرض كل الإشعارات</Link>
+                     </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="relative h-10 w-10 rounded-full"
+                    >
+                      <Avatar className="h-10 w-10">
+                        <AvatarImage
+                          src="https://picsum.photos/seed/user1/100/100"
+                          alt="صورة المستخدم"
+                          data-ai-hint="female portrait"
+                        />
+                        <AvatarFallback>س أ</AvatarFallback>
+                      </Avatar>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56" align="end" forceMount>
+                    <DropdownMenuLabel className="font-normal">
+                      <div className="flex flex-col space-y-1 text-right">
+                        <p className="text-sm font-medium leading-none">
+                          سارة الأحمد
+                        </p>
+                        <p className="text-xs leading-none text-muted-foreground">
+                          sara@example.com
+                        </p>
+                      </div>
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>الملف الشخصي</DropdownMenuItem>
+                    <DropdownMenuItem>الإعدادات</DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/admin">
+                        <ShieldCheck className="ml-2 h-4 w-4" />
+                        <span>لوحة التحكم</span>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <Link href="/">تسجيل الخروج</Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </>
+            ) : (
+              <nav className="flex items-center space-x-2">
+                <Button asChild variant="ghost" size="sm">
+                  <Link href="/login">تسجيل الدخول</Link>
+                </Button>
+                <Button asChild size="sm">
+                  <Link href="/register">التسجيل</Link>
+                </Button>
+              </nav>
+            )}
+          </div>
+        </header>
       <main className="flex-1">
         <section className="relative h-[60vh] min-h-[500px] w-full">
           {heroImage && (
@@ -208,3 +295,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
