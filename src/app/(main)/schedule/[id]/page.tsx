@@ -1,5 +1,5 @@
 'use client';
-import { use } from 'react';
+import { use, useState } from 'react';
 import { notFound } from 'next/navigation';
 import { matches, players, teams } from '@/lib/mock-data';
 import Image from 'next/image';
@@ -21,7 +21,8 @@ import {
 } from '@/components/ui/table';
 import { Separator } from '@/components/ui/separator';
 import LiveCommentary from './LiveCommentary';
-import { Info } from 'lucide-react';
+import { Info, BellPlus, BellRing } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function MatchDetailsPage({
   params,
@@ -30,6 +31,7 @@ export default function MatchDetailsPage({
 }) {
   const { id } = use(params);
   const match = matches.find((m) => m.id === id);
+  const [isFollowing, setIsFollowing] = useState(false);
 
   if (!match) {
     notFound();
@@ -67,6 +69,12 @@ export default function MatchDetailsPage({
               </span>
             </div>
             <div className="text-center w-1/3">
+               {isScheduled && (
+                <Button variant="outline" size="sm" onClick={() => setIsFollowing(!isFollowing)} className="mb-3">
+                  {isFollowing ? <BellRing className="ml-2 h-4 w-4 text-accent" /> : <BellPlus className="ml-2 h-4 w-4" />}
+                  {isFollowing ? 'تتابع' : 'تابع المباراة'}
+                </Button>
+              )}
               <p className="font-bold text-5xl md:text-6xl text-primary font-headline">
                 {match.score ?? 'VS'}
               </p>
@@ -89,7 +97,7 @@ export default function MatchDetailsPage({
           </div>
         </CardHeader>
       </Card>
-      <Tabs defaultValue={TABS[0].value} dir="rtl">
+      <Tabs defaultValue={isScheduled ? TABS[1].value : TABS[0].value} dir="rtl">
         <TabsList className={`grid w-full ${isScheduled ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-4'} bg-muted/80 border border-border`}>
           {TABS.filter(tab => !isScheduled || (tab.value !== 'commentary' && tab.value !== 'stats')).map(tab => (
             <TabsTrigger key={tab.value} value={tab.value}>{tab.label}</TabsTrigger>
@@ -185,3 +193,5 @@ export default function MatchDetailsPage({
     </div>
   );
 }
+
+    
