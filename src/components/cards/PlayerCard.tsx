@@ -35,15 +35,18 @@ export function PlayerCard({ player, team }: PlayerCardProps) {
           />
 
           <div className="relative z-10 flex flex-col h-full">
-            {/* Top section: Rating, Position, Flag, Team Logo */}
-            <div className="flex-shrink-0 p-2">
+            {/* Top section: Rating, Position */}
+            <div className="flex-shrink-0 p-2 text-right">
               <div className="text-3xl font-bold">{player.rating}</div>
               <div className="text-lg font-semibold -mt-1">{player.position}</div>
-              <div className="mt-1 flex flex-col items-start gap-1">
-                 <Image src={player.nationality.flagUrl} alt={player.nationality.name} width={32} height={20} className="rounded-sm" data-ai-hint="country flag" />
-                 <Image src={team.logoUrl} alt={team.name} width={24} height={24} className="rounded-full" data-ai-hint="team logo" />
-              </div>
             </div>
+            
+            {/* Top right: logos */}
+            <div className="absolute top-2 left-2 flex flex-col items-center gap-2">
+                 <Image src={team.logoUrl} alt={team.name} width={32} height={32} className="rounded-full bg-background/50 p-1" data-ai-hint="team logo" />
+                 <Image src={player.nationality.flagUrl} alt={player.nationality.name} width={32} height={20} className="rounded-sm" data-ai-hint="country flag" />
+            </div>
+
 
             <div className="flex-grow flex flex-col justify-end">
                 {/* Player Name */}
@@ -57,7 +60,7 @@ export function PlayerCard({ player, team }: PlayerCardProps) {
                 {/* Stats Grid */}
                 <div className="grid grid-cols-2 gap-x-4 gap-y-1 p-4 text-lg">
                   {stats.map(stat => (
-                      <div key={stat.label} className="flex gap-2">
+                      <div key={stat.label} className="flex gap-2 justify-center">
                           <span className="font-bold">{stat.value}</span>
                           <span className="text-muted-foreground">{stat.label}</span>
                       </div>
