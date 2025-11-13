@@ -27,7 +27,7 @@ export function MatchCard({ match }: MatchCardProps) {
   return (
     <Card className="flex flex-col bg-gray-800/50 border-gray-700/50 text-white transition-all hover:border-gray-600/80">
       <CardHeader className="p-4">
-        <div className="flex items-center justify-around">
+        <div className="flex items-start justify-around">
           <div className="flex flex-col items-center gap-2 text-center w-2/5">
             <Image
               src={match.team1.logoUrl}
@@ -38,8 +38,22 @@ export function MatchCard({ match }: MatchCardProps) {
               data-ai-hint="team logo"
             />
             <span className="font-headline font-semibold text-center leading-tight">{match.team1.name}</span>
+            <div className="grid grid-cols-3 gap-x-3 text-xs mt-1">
+                <div className="flex flex-col items-center">
+                    <span className="font-bold text-gray-300">{match.team1.stats.att}</span>
+                    <span className="text-gray-400">ATT</span>
+                </div>
+                 <div className="flex flex-col items-center">
+                    <span className="font-bold text-gray-300">{match.team1.stats.mid}</span>
+                    <span className="text-gray-400">MID</span>
+                </div>
+                 <div className="flex flex-col items-center">
+                    <span className="font-bold text-gray-300">{match.team1.stats.def}</span>
+                    <span className="text-gray-400">DEF</span>
+                </div>
+            </div>
           </div>
-          <div className="text-center w-1/5">
+          <div className="text-center w-1/5 pt-6">
             <p className="font-bold text-3xl text-primary font-headline">
               {match.score ?? 'ضد'}
             </p>
@@ -54,6 +68,20 @@ export function MatchCard({ match }: MatchCardProps) {
               data-ai-hint="team logo"
             />
             <span className="font-headline font-semibold text-center leading-tight">{match.team2.name}</span>
+             <div className="grid grid-cols-3 gap-x-3 text-xs mt-1">
+                <div className="flex flex-col items-center">
+                    <span className="font-bold text-gray-300">{match.team2.stats.att}</span>
+                    <span className="text-gray-400">ATT</span>
+                </div>
+                 <div className="flex flex-col items-center">
+                    <span className="font-bold text-gray-300">{match.team2.stats.mid}</span>
+                    <span className="text-gray-400">MID</span>
+                </div>
+                 <div className="flex flex-col items-center">
+                    <span className="font-bold text-gray-300">{match.team2.stats.def}</span>
+                    <span className="text-gray-400">DEF</span>
+                </div>
+            </div>
           </div>
         </div>
       </CardHeader>
