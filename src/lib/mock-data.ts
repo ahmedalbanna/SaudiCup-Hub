@@ -117,6 +117,7 @@ export const matches: Match[] = [
   { id: 'm4', team1: teams[0], team2: teams[3], date: '2024-11-02', time: '20:00', venue: 'استاد الملك فهد', score: '2 - 1', status: 'finished' },
   { id: 'm5', team1: teams[1], team2: teams[2], date: '2024-11-02', time: '20:00', venue: 'مدينة الملك عبدالله الرياضية', score: '0 - 0', status: 'finished' },
   { id: 'm6', team1: teams[0], team2: teams[5], date: '2024-10-20', time: '20:00', venue: 'مرسول بارك', score: '3 - 2', status: 'finished' },
+  { id: 'm7', team1: teams[1], team2: teams[0], date: '2024-04-15', time: '20:00', venue: 'مدينة الملك عبدالله الرياضية', score: '2 - 2', status: 'finished' },
 ];
 
 export const news: NewsArticle[] = [
