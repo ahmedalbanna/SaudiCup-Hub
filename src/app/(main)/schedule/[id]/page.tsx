@@ -110,17 +110,17 @@ export default async function MatchDetailsPage({
           <TabsTrigger value="stats">الإحصائيات</TabsTrigger>
           <TabsTrigger value="h2h">المواجهات</TabsTrigger>
         </TabsList>
-         <TabsContent value="commentary">
+         <TabsContent value="commentary" className="rounded-lg bg-gray-900/50 p-4 lg:p-6">
           <LiveCommentary match={match} />
         </TabsContent>
-        <TabsContent value="analysis">
+        <TabsContent value="analysis" className="rounded-lg bg-gray-900/50 p-4 lg:p-6">
           <MatchAnalysis 
             getAnalysis={getAnalysis}
             initialData={{historicalPerformance, teamLineups, liveScores}}
           />
         </TabsContent>
-        <TabsContent value="lineups">
-          <Card>
+        <TabsContent value="lineups" className="rounded-lg bg-gray-900/50">
+          <Card className="bg-transparent border-none shadow-none">
             <CardHeader>
               <CardTitle>تشكيلات الفرق</CardTitle>
               <CardDescription>
@@ -147,8 +147,8 @@ export default async function MatchDetailsPage({
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="stats">
-           <Card>
+        <TabsContent value="stats" className="rounded-lg bg-gray-900/50">
+           <Card className="bg-transparent border-none shadow-none">
             <CardHeader>
                 <CardTitle>إحصائيات المباراة</CardTitle>
             </CardHeader>
@@ -173,8 +173,8 @@ export default async function MatchDetailsPage({
             </CardContent>
            </Card>
         </TabsContent>
-        <TabsContent value="h2h">
-           <Card>
+        <TabsContent value="h2h" className="rounded-lg bg-gray-900/50">
+           <Card className="bg-transparent border-none shadow-none">
             <CardHeader>
                 <CardTitle>المواجهات المباشرة</CardTitle>
                 <CardDescription>المواجهات السابقة بين الفريقين.</CardDescription>
